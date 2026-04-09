@@ -11,181 +11,232 @@
             theme: {
                 extend: {
                     colors: {
-                        corpOrange: '#F28525', // Naranja del logo
-                        corpGreen: '#5A8B42',  // Verde del logo
+                        corpOrange: '#F57C00', // primary_container (Stitch)
+                        corpOrangeDark: '#964900', // primary (Stitch)
+                        corpGreen: '#1B6D24', // secondary (Stitch)
+                        bgBase: '#fcf9f4',
+                        surfaceLow: '#f6f3ee',
+                        surfaceHigh: '#ebe8e3'
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
+                        display: ['Manrope', 'sans-serif'],
                     }
                 }
             }
         }
     </script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <link rel="stylesheet" href="css/style.css">
     <!-- FontAwesome para iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="font-sans bg-gray-50 text-gray-800 antialiased">
+<body class="font-sans bg-bgBase text-gray-900 antialiased">
     
     <!-- Header -->
-    <header class="bg-white shadow-sm fixed w-full top-0 z-40 transition-all duration-300" id="header">
+    <header class="bg-white/90 backdrop-blur-md fixed w-full top-0 z-40 transition-all duration-300" id="header" style="border-bottom: 1px solid rgba(222, 193, 175, 0.3);">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <div class="flex-shrink-0 flex items-center">
-                <!-- Se espera que el logo esté en la misma carpeta o ruta -->
                 <img src="logo.png" alt="Apadrina tu Naranjo" class="h-24 w-auto object-contain rounded drop-shadow-sm" onerror="this.src='https://via.placeholder.com/150x50?text=Logo+Aqui'">
             </div>
             <nav class="hidden md:flex space-x-8">
-                <a href="#como-funciona" class="text-gray-600 hover:text-corpOrange font-medium transition-colors">Cómo funciona</a>
-                <a href="#agricultor" class="text-gray-600 hover:text-corpOrange font-medium transition-colors">El Agricultor</a>
-                <a href="#garantia" class="text-gray-600 hover:text-corpOrange font-medium transition-colors">Garantía de Calidad</a>
+                <a href="#como-funciona" class="text-sm font-bold text-[#574235] hover:text-corpOrangeDark transition-colors tracking-wide uppercase">Cómo funciona</a>
+                <a href="#impacto" class="text-sm font-bold text-[#574235] hover:text-corpOrangeDark transition-colors tracking-wide uppercase">Impacto</a>
+                <a href="#garantia" class="text-sm font-bold text-[#574235] hover:text-corpOrangeDark transition-colors tracking-wide uppercase">Garantías</a>
             </nav>
             <div class="hidden md:block">
-                <button onclick="openModal('reservaModal')" class="bg-corpOrange text-white px-6 py-2 rounded-full font-bold shadow-lg hover:bg-orange-600 transition-all transform hover:scale-105">Apadrinar Ahora</button>
+                <button onclick="openModal('reservaModal')" class="bg-corpOrangeDark text-white px-6 py-2 rounded-md font-bold shadow-md hover:bg-corpOrange transition-all">Apadrinar</button>
             </div>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden bg-gray-900">
+    <section class="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden bg-surfaceHigh">
         <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1549887552-cb1071d3e5ca?q=80&w=2000&auto=format&fit=crop')] bg-cover bg-center bg-no-repeat"></div>
-        <div class="absolute inset-0 bg-black/60 backdrop-blur-[1px]"></div>
-        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <span class="inline-block py-1 px-3 rounded-full bg-orange-500/20 text-orange-300 font-semibold tracking-wider text-sm mb-4 border border-orange-500/30">🔥 TEMPORADA 2026 ABIERTA - PLAZAS LIMITADAS</span>
-            <h1 class="text-4xl sm:text-5xl lg:text-7xl font-extrabold text-white tracking-tight mb-6">
-                Tu propio Naranjo en Valencia, <br class="hidden sm:block"><span class="text-corpOrange text-transparent bg-clip-text bg-gradient-to-r from-corpOrange to-yellow-300">Directo del Árbol a tu Mesa</span>
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-[2px]"></div>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-8">
+            <span class="inline-block py-1 px-4 rounded-full bg-corpOrangeDark/30 text-orange-200 font-bold tracking-widest text-xs mb-6 uppercase border border-corpOrangeDark/50">🔥 Temporada 2026 Abierta</span>
+            <h1 class="font-display text-4xl sm:text-5xl lg:text-7xl font-extrabold text-white tracking-tight mb-6">
+                Naranjas directas del árbol<br class="hidden sm:block"><span class="text-transparent bg-clip-text bg-gradient-to-r from-corpOrange to-yellow-400">a tu mesa en 24/48h</span>
             </h1>
-            <p class="mt-4 max-w-2xl text-xl text-gray-200 mx-auto mb-8 font-medium">
-                Asegura 60 kg anuales de la inigualable variedad Navelina por solo 40€/año. <span class="text-white font-bold bg-green-600/30 px-2 py-1 rounded">¡A solo 0,66€ el kilo!</span>
-                <br>Tú eliges cuándo recolectamos. Nosotros lo cuidamos en El Romaní.
+            <p class="mt-4 max-w-2xl text-xl text-gray-200 mx-auto mb-8 font-medium leading-relaxed">
+                Apadrina tu propio naranjo en Valencia, ponle tu nombre y recibe hasta <strong>60 kg anuales</strong> de tu cosecha por solo 40€ de mantenimiento.
             </p>
-            <div class="flex flex-wrap justify-center items-center gap-6 mb-10 text-sm text-gray-300 font-semibold">
-                <div class="flex items-center"><i class="fa-solid fa-check-circle text-corpGreen mr-2 text-lg"></i> 100% Libre de Ceras</div>
-                <div class="flex items-center"><i class="fa-solid fa-check-circle text-corpGreen mr-2 text-lg"></i> Envío en 24h/48h</div>
-                <div class="flex items-center"><i class="fa-solid fa-check-circle text-corpGreen mr-2 text-lg"></i> Trato directo con Jose</div>
+            <div class="flex flex-wrap justify-center items-center gap-6 mb-12 text-sm text-gray-300 font-semibold">
+                <div class="flex items-center"><i class="fa-solid fa-check-circle text-green-400 mr-2 text-lg"></i> Sin Censores Químicos</div>
+                <div class="flex items-center"><i class="fa-solid fa-check-circle text-green-400 mr-2 text-lg"></i> Cosecha Bajo Demanda</div>
+                <div class="flex items-center"><i class="fa-solid fa-check-circle text-green-400 mr-2 text-lg"></i> Trato directo</div>
             </div>
             <div class="mt-10 max-w-sm mx-auto sm:max-w-none sm:flex sm:justify-center gap-4">
-                <button onclick="openModal('reservaModal')" class="w-full sm:w-auto px-8 py-4 border border-transparent text-lg font-bold rounded-full text-white bg-corpOrange hover:bg-orange-600 transition-all transform hover:scale-105 shadow-lg shadow-orange-500/30 flex items-center justify-center">
+                <button onclick="openModal('reservaModal')" class="w-full sm:w-auto px-10 py-4 border-none text-lg font-display font-extrabold rounded-md text-white bg-gradient-to-b from-corpOrange to-corpOrangeDark hover:opacity-90 transition-all shadow-[0_15px_30px_rgba(150,73,0,0.4)] flex items-center justify-center">
                     🍊 ¡QUIERO APADRINAR UN NARANJO YA!
                 </button>
-                <a href="#como-funciona" class="w-full sm:w-auto mt-4 sm:mt-0 px-8 py-4 border-2 border-white/20 text-lg font-bold rounded-full text-white bg-white/5 hover:bg-white/10 backdrop-blur-sm transition-all flex items-center justify-center">
-                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                    Ver cómo funciona
-                </a>
+                <button onclick="openModal('dudasModal')" class="w-full sm:w-auto mt-4 sm:mt-0 px-8 py-4 border border-[#dec1af] border-opacity-30 text-lg font-bold rounded-md text-white bg-white/10 hover:bg-white/20 backdrop-blur-md transition-all flex items-center justify-center">
+                    <i class="fa-solid fa-circle-question mr-3 text-xl"></i>
+                    Tengo Dudas
+                </button>
             </div>
-            <p class="mt-6 text-sm text-gray-400"><i class="fa-solid fa-lock mr-1"></i> Reserva 100% Segura. Pago posterior al confirmar disponibilidad.</p>
         </div>
     </section>
 
     <!-- Cómo Funciona -->
-    <section id="como-funciona" class="py-20 bg-white">
+    <section id="como-funciona" class="py-24 bg-bgBase">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">Cómo funciona el apadrinamiento</h2>
-                <div class="w-24 h-1 bg-corpGreen mx-auto mt-4 rounded"></div>
+            <div class="mb-16 border-b border-[#dec1af]/30 pb-4">
+                <span class="text-sm font-bold tracking-widest uppercase text-corpGreen mb-2 block">Mecánica</span>
+                <h2 class="font-display text-4xl font-extrabold text-[#31302d] tracking-tight">Cómo funciona en 4 pasos</h2>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 relative">
-                <div class="bg-gray-50 rounded-2xl p-8 border border-gray-100 shadow-sm hover:shadow-xl transition-shadow relative z-10">
-                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 text-2xl font-bold mb-6 mx-auto">1</div>
-                    <h3 class="text-xl font-bold text-center mb-4">Eliges tu Árbol</h3>
-                    <p class="text-gray-600 text-center">Firma tu contrato de apadrinamiento online. Dale un nombre a tu naranjo y nosotros le pondremos una tablilla en la finca.</p>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="bg-surfaceLow rounded-md p-8 pt-12 relative hover:-translate-y-1 transition-transform border border-transparent hover:border-[#dec1af]/50">
+                    <div class="absolute top-0 left-8 -translate-y-1/2 w-12 h-12 bg-white text-corpOrangeDark font-display font-bold text-xl flex items-center justify-center rounded-md shadow-sm border border-[#dec1af]/30">1</div>
+                    <h3 class="font-display text-xl font-bold mb-3 text-[#1c1c19]">Reserva y Bautiza</h3>
+                    <p class="text-sm leading-relaxed text-[#574235]">Elige tu árbol en nuestra finca y dale un nombre. Nosotros colocaremos una tablilla física con él.</p>
                 </div>
-                
-                <div class="bg-gray-50 rounded-2xl p-8 border border-gray-100 shadow-sm hover:shadow-xl transition-shadow relative z-10">
-                    <div class="w-16 h-16 bg-corpGreen text-white rounded-full flex items-center justify-center text-2xl font-bold mb-6 mx-auto">2</div>
-                    <h3 class="text-xl font-bold text-center mb-4">Nosotros lo Cuidamos</h3>
-                    <p class="text-gray-600 text-center">Cultivaremos y mimaremos tu naranjo Navelina en El Romaní durante todo el año bajo prácticas agrícolas responsables.</p>
+                <div class="bg-surfaceLow rounded-md p-8 pt-12 relative hover:-translate-y-1 transition-transform border border-transparent hover:border-[#dec1af]/50">
+                    <div class="absolute top-0 left-8 -translate-y-1/2 w-12 h-12 bg-white text-corpOrangeDark font-display font-bold text-xl flex items-center justify-center rounded-md shadow-sm border border-[#dec1af]/30">2</div>
+                    <h3 class="font-display text-xl font-bold mb-3 text-[#1c1c19]">Recibe tu Certificado</h3>
+                    <p class="text-sm leading-relaxed text-[#574235]">Obtendrás un título de apadrinamiento único y la primera fotografía de tu árbol recién bautizado.</p>
                 </div>
-                
-                <div class="bg-gray-50 rounded-2xl p-8 border border-gray-100 shadow-sm hover:shadow-xl transition-shadow relative z-10">
-                    <div class="w-16 h-16 bg-corpOrange text-white rounded-full flex items-center justify-center text-2xl font-bold mb-6 mx-auto">3</div>
-                    <h3 class="text-xl font-bold text-center mb-4">Recibe tu Cosecha</h3>
-                    <p class="text-gray-600 text-center">Te avisamos cuando estén maduras. Pídenos cajas bajo demanda (hasta 60 kg) pagando solo el envío contrareembolso.</p>
+                <div class="bg-surfaceLow rounded-md p-8 pt-12 relative hover:-translate-y-1 transition-transform border border-transparent hover:border-[#dec1af]/50">
+                    <div class="absolute top-0 left-8 -translate-y-1/2 w-12 h-12 bg-white text-corpOrangeDark font-display font-bold text-xl flex items-center justify-center rounded-md shadow-sm border border-[#dec1af]/30">3</div>
+                    <h3 class="font-display text-xl font-bold mb-3 text-[#1c1c19]">Elige tu Envío</h3>
+                    <p class="text-sm leading-relaxed text-[#574235]">De noviembre a abril, decide en qué momento y cuántos kilos quieres recibir de tu propia cosecha de Navelinas.</p>
+                </div>
+                <div class="bg-surfaceLow rounded-md p-8 pt-12 relative hover:-translate-y-1 transition-transform border border-transparent hover:border-[#dec1af]/50">
+                    <div class="absolute top-0 left-8 -translate-y-1/2 w-12 h-12 bg-white text-corpOrangeDark font-display font-bold text-xl flex items-center justify-center rounded-md shadow-sm border border-[#dec1af]/30">4</div>
+                    <h3 class="font-display text-xl font-bold mb-3 text-[#1c1c19]">Disfruta la Frescura</h3>
+                    <p class="text-sm leading-relaxed text-[#574235]">Recolectamos bajo demanda exclusivamente para ti y te lo entregamos directo a tu puerta en 24/48h.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- El Agricultor -->
-    <section id="agricultor" class="py-20 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-white rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row">
-                <div class="md:w-1/2 min-h-[400px] relative">
-                    <!-- Placeholder con imagen de campo agricultor -->
-                    <img src="https://images.unsplash.com/photo-1595841696650-6f4e1ced13ae?q=80&w=1000&auto=format&fit=crop" alt="Jose Atienza en el campo de naranjos" class="w-full h-full object-cover">
-                </div>
-                <div class="md:w-1/2 p-10 lg:p-16 flex flex-col justify-center">
-                    <h4 class="text-corpGreen font-bold tracking-wider uppercase mb-2">Conoce a tu agricultor</h4>
-                    <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-6">Jose Atienza</h2>
-                    <p class="text-lg text-gray-600 mb-6 leading-relaxed">
-                        Soy Jose, tu agricultor de confianza en El Romaní (Valencia). Llevo años dedicando mi vida al cuidado del campo y de la tierra.
-                        Mi compromiso es claro: llevar a tu mesa la auténtica naranja valenciana, sin intermediarios, tratamientos post-cosecha, ni ceras artificiales.
-                    </p>
-                    <p class="text-lg text-gray-600 mb-8 leading-relaxed">
-                        Con este proyecto, no solo apoyas la agricultura local sostenible, sino que ganas una parte de nuestra tierra. Estaré encantado de recibirte si algún día quieres venir a visitar tu propio naranjo.
-                    </p>
-                    <div>
-                        <button onclick="openModal('reservaModal')" class="text-corpOrange font-bold flex items-center hover:text-orange-600 transition-colors">
-                            Conviértete en mi Padrino <i class="fa-solid fa-arrow-right ml-2 mt-1"></i>
-                        </button>
+    <!-- Sostenibilidad e Impacto -->
+    <section id="impacto" class="py-24 bg-surfaceHigh relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-16 items-center">
+            <div>
+                <span class="text-sm font-bold tracking-widest uppercase text-corpGreen mb-2 block">Conciencia</span>
+                <h2 class="font-display text-4xl md:text-5xl font-extrabold text-[#31302d] tracking-tight mb-8">El impacto real<br>de tu Apadrinamiento</h2>
+                <p class="text-lg text-[#574235] mb-8 leading-relaxed">Apadrinar no es solo una compra logística. Estás participando activamente en una <strong>revolución alimentaria sostenible</strong> frente a la industria tradicional.</p>
+                <div class="space-y-6">
+                    <div class="flex items-start">
+                        <div class="bg-[#a0f399] w-10 h-10 rounded-md flex items-center justify-center shrink-0 mt-1 mr-4">
+                            <i class="fa-solid fa-leaf text-[#005312]"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg text-[#1c1c19]">Absorbes 50 kg de CO2/año</h4>
+                            <p class="text-sm text-[#574235] mt-1 line-clamp-3">Tu naranjo es un pulmón oxigenado. Trabaja como sumidero natural de carbono limpiando la atmósfera valenciana día tras día.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="bg-[#a0f399] w-10 h-10 rounded-md flex items-center justify-center shrink-0 mt-1 mr-4">
+                            <i class="fa-solid fa-ban text-[#005312]"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg text-[#1c1c19]">Cero Desperdicio Alimentario</h4>
+                            <p class="text-sm text-[#574235] mt-1">Cultivamos lo que tú demandas. Eliminamos el volumen de fruta que termina pudriéndose en los campos por la falta de previsión y precios injustos.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="bg-[#a0f399] w-10 h-10 rounded-md flex items-center justify-center shrink-0 mt-1 mr-4">
+                            <i class="fa-solid fa-hand-holding-dollar text-[#005312]"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg text-[#1c1c19]">Comercio Justo Real</h4>
+                            <p class="text-sm text-[#574235] mt-1">Al eliminar la red de especuladores intermediarios, garantizas un sueldo digno a los agricultores de El Romaní.</p>
+                        </div>
                     </div>
                 </div>
             </div>
+            <div class="bg-surfaceLow rounded-[4px] overflow-hidden aspect-square relative shadow-lg">
+                <!-- Soft masking effect from design instructions -->
+                <div class="absolute inset-0 bg-gradient-to-t from-surfaceHigh to-transparent z-10 opacity-30"></div>
+                <img src="https://images.unsplash.com/photo-1595841696650-6f4e1ced13ae?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover relative z-0" alt="Jose Atienza en el campo">
+            </div>
         </div>
     </section>
 
-    <!-- Garantía -->
-    <section id="garantia" class="py-20 bg-corpGreen text-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-3xl font-extrabold sm:text-4xl mb-12">Garantía de Calidad Total</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div>
-                    <i class="fa-solid fa-leaf text-4xl text-green-200 mb-4"></i>
-                    <h3 class="font-bold text-xl mb-2">100% Naturales</h3>
-                    <p class="text-green-100">Sin cámaras frigoríficas ni tratamientos químicos post-cosecha.</p>
+    <!-- Condiciones / Diseño transparente The Precision Grove -->
+    <section id="garantia" class="py-24 bg-corpGreen text-white overflow-hidden relative">
+        <div class="absolute inset-0 opacity-10 bg-[url('https://images.unsplash.com/photo-1498454593465-98a44d8c1c5a?q=80&w=2000&auto=format&fit=crop')] bg-cover mix-blend-overlay"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 grid md:grid-cols-2 gap-16">
+            <div class="flex flex-col justify-center order-2 md:order-1">
+                <div class="bg-white text-gray-900 rounded-md p-10 md:p-12 shadow-2xl">
+                    <span class="text-xs font-bold tracking-widest uppercase text-corpOrangeDark mb-2 block">Experiencia Real</span>
+                    <h3 class="font-display font-extrabold text-3xl mb-4 text-[#1c1c19]">Ven a visitar tu huerto</h3>
+                    <p class="text-[#574235] mb-6 text-sm leading-relaxed">El apadrinamiento va mucho más allá del entorno puramente digital. Estaremos encantados de abrirte las puertas de nuestra finca en El Romaní (Valencia). Ven con tu familia a pasear entre los árboles, conoce a Jose en persona y, lo más importante: <strong>recolecta tú mismo las naranjas de tu árbol</strong>.</p>
+                    <p class="text-xs text-[#8b7263] uppercase tracking-widest font-bold mb-8">* Acordar cita previa en temporada.</p>
+                    <button onclick="openModal('reservaModal')" class="w-full text-center bg-corpOrangeDark text-white py-4 font-bold rounded-md hover:bg-corpOrange transition-colors">Apadrinar 60kg por 40€</button>
                 </div>
-                <div>
-                    <i class="fa-solid fa-truck-fast text-4xl text-green-200 mb-4"></i>
-                    <h3 class="font-bold text-xl mb-2">Recién Recolectadas</h3>
-                    <p class="text-green-100">Del árbol a tu casa en menos de 48 horas tras tu orden de envío.</p>
+            </div>
+            <div class="order-1 md:order-2">
+                <h2 class="font-display text-4xl font-extrabold tracking-tight mb-8">Condiciones Transparentes y Beneficios Exclusivos</h2>
+                <div class="space-y-6 text-[#a0f399]">
+                    <div class="flex items-start">
+                        <i class="fa-solid fa-check mt-1 mr-4 text-white"></i> 
+                        <p><strong>Sin Compromiso de Permanencia:</strong> Eres totalmente libre de cancelar la renovación al término de la temporada vigente sin penalizaciones.</p>
+                    </div>
+                    <div class="flex items-start">
+                        <i class="fa-solid fa-check mt-1 mr-4 text-white"></i> 
+                        <p><strong>Kilos Acumulables:</strong> ¿No has logrado consumir tus 60kg previstos? No los pierdes; se guardan en tu "bolsa" para la siguiente campaña.</p>
+                    </div>
+                    <div class="flex items-start">
+                        <i class="fa-solid fa-check mt-1 mr-4 text-white"></i> 
+                        <p><strong>Riesgo Cero:</strong> En caso de que tú naranjo se vea afectado por heladas, inclemencias, o plagas, seguiremos proveyéndote los kilos pactados con la reserva premium de la propia finca.</p>
+                    </div>
                 </div>
-                <div>
-                    <i class="fa-solid fa-shield-halved text-4xl text-green-200 mb-4"></i>
-                    <h3 class="font-bold text-xl mb-2">Riesgo Cero</h3>
-                    <p class="text-green-100">Si a tu árbol le pasa algo por clima, lo cubrimos con otro de la finca.</p>
+                
+                <div class="bg-[#1b6d24]/60 backdrop-blur-sm p-6 rounded-md mt-10 border border-[#a0f399]/30 shadow-inner">
+                    <h4 class="font-display font-bold text-white text-xl mb-2 flex items-center"><i class="fa-solid fa-award mr-3 text-yellow-300"></i> Plan de Fidelidad</h4>
+                    <p class="text-sm text-[#a0f399]">Premiamos tu confianza. Al renovar tu apadrinamiento para el segundo año consecutivo, te regalamos <strong>6 kg extra gratis</strong> introducidos en tu primer envío de la temporada.</p>
                 </div>
-                <div>
-                    <i class="fa-solid fa-tree text-4xl text-green-200 mb-4"></i>
-                    <h3 class="font-bold text-xl mb-2">Pertenencia</h3>
-                    <p class="text-green-100">Un árbol específico con su tablilla y el nombre que tú elijas.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-24 bg-bgBase">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="font-display text-4xl font-extrabold text-[#31302d] tracking-tight mb-12 text-center">Preguntas Frecuentes</h2>
+            <div class="space-y-6">
+                <div class="bg-surfaceLow rounded-md p-6 border border-[#dec1af]/30">
+                    <h4 class="font-bold text-lg text-[#1c1c19] mb-2">¿Cuánto vive mi naranjo?</h4>
+                    <p class="text-[#574235] text-sm">Un naranjo en plena producción suele vivir ofreciendo frutos de extrema calidad durante unos 30 años. Este contrato asocia tu nombre durante 1 temporada (renovable anualmente).</p>
+                </div>
+                <div class="bg-surfaceLow rounded-md p-6 border border-[#dec1af]/30">
+                    <h4 class="font-bold text-lg text-[#1c1c19] mb-2">¿Es posible regalar este apadrinamiento?</h4>
+                    <p class="text-[#574235] text-sm">Totalmente. Constituye un excelente y original regalo para Navidad, aniversarios o eventos corporativos. Realiza el pedido con total normalidad pero introduce el nombre del afortunado en el proceso de check-out, se generará el certificado a su nombre.</p>
+                </div>
+                <div class="bg-surfaceLow rounded-md p-6 border border-[#dec1af]/30">
+                    <h4 class="font-bold text-lg text-[#1c1c19] mb-2">Una vez pago los 40€ iniciales, ¿cuánto cuestan los envíos logísticos?</h4>
+                    <p class="text-[#574235] text-sm">La cuota cubre el mantenimiento. Los envíos de cajas a demanda tienen una tarifa logística a contrareembolso en tu domicilio en base al volumen solicitado; sin embargo, al prescindir de minoristas, el margen siempre jugará a tu favor.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-gray-400 py-12 text-center md:text-left">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-3 gap-8">
+    <footer class="bg-[#1c1c19] text-[#dec1af] py-16 text-center md:text-left">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-3 gap-12">
             <div>
-                <h3 class="text-white text-xl font-bold mb-4">Apadrina tu Naranjo</h3>
-                <p>Naranjas Navelina directas del campo a tu mesa.</p>
+                <h3 class="font-display text-white text-2xl font-bold mb-4">Apadrina tu Naranjo</h3>
+                <p class="text-sm">La experiencia original agro-tech.<br>Naranjas Navelina puras, directas del campo a tu mesa.</p>
             </div>
             <div>
-                <h3 class="text-white text-xl font-bold mb-4">Contacto</h3>
-                <p><i class="fa-solid fa-envelope mr-2"></i> info@apadrinatunaranjo.es</p>
-                <p><i class="fa-solid fa-map-location-dot mr-2"></i> El Romaní (Valencia)</p>
+                <h3 class="font-display text-white text-lg font-bold mb-4">Contacto</h3>
+                <p class="mb-2"><i class="fa-solid fa-envelope mr-3"></i> info@apadrinatunaranjo.es</p>
+                <p><i class="fa-solid fa-map-location-dot mr-3"></i> Finca El Romaní (Valencia)</p>
             </div>
             <div>
-                <h3 class="text-white text-xl font-bold mb-4">Legal</h3>
-                <p><a href="#" class="hover:text-white transition-colors">Términos y Condiciones</a></p>
-                <p><a href="#" class="hover:text-white transition-colors">Política de Privacidad</a></p>
+                <h3 class="font-display text-white text-lg font-bold mb-4">Mecánica Legal</h3>
+                <p class="mb-2"><a href="#" class="hover:text-white transition-colors">Términos del Contrato</a></p>
+                <p><a href="#" class="hover:text-white transition-colors">Privacidad GDPR</a></p>
             </div>
         </div>
-        <div class="mt-8 border-t border-gray-800 pt-8 text-center text-sm">
-            <p>&copy; 2026 Apadrina tu Naranjo. Todos los derechos reservados.</p>
+        <div class="mt-12 border-t border-[#31302d] pt-8 text-center text-xs opacity-60">
+            <p>&copy; 2026 Apadrina tu Naranjo. Proyecto implementado con Stitch Design System "The Precision Grove".</p>
         </div>
     </footer>
 
