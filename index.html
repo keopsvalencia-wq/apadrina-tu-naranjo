@@ -34,7 +34,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <div class="flex-shrink-0 flex items-center">
                 <!-- Se espera que el logo esté en la misma carpeta o ruta -->
-                <img src="logo.jpeg" alt="Apadrina tu Naranjo" class="h-12 w-auto object-contain rounded" onerror="this.src='https://via.placeholder.com/150x50?text=Logo+Aqui'">
+                <img src="logo.png" alt="Apadrina tu Naranjo" class="h-16 w-auto object-contain rounded drop-shadow-sm" onerror="this.src='https://via.placeholder.com/150x50?text=Logo+Aqui'">
             </div>
             <nav class="hidden md:flex space-x-8">
                 <a href="#como-funciona" class="text-gray-600 hover:text-corpOrange font-medium transition-colors">Cómo funciona</a>
@@ -53,20 +53,28 @@
             <img src="https://images.unsplash.com/photo-1549887552-cb1071d3e5ca?q=80&w=2000&auto=format&fit=crop" alt="Campo de naranjos" class="w-full h-full object-cover opacity-40">
         </div>
         <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight mb-6">
-                Tu propio Naranjo en Valencia, <br class="hidden sm:block"><span class="text-corpOrange text-transparent bg-clip-text bg-gradient-to-r from-corpOrange to-yellow-400">Directo a tu Mesa</span>
+            <span class="inline-block py-1 px-3 rounded-full bg-orange-500/20 text-orange-300 font-semibold tracking-wider text-sm mb-4 border border-orange-500/30">🔥 TEMPORADA 2026 ABIERTA - PLAZAS LIMITADAS</span>
+            <h1 class="text-4xl sm:text-5xl lg:text-7xl font-extrabold text-white tracking-tight mb-6">
+                Tu propio Naranjo en Valencia, <br class="hidden sm:block"><span class="text-corpOrange text-transparent bg-clip-text bg-gradient-to-r from-corpOrange to-yellow-300">Directo del Árbol a tu Mesa</span>
             </h1>
-            <p class="mt-4 max-w-2xl text-xl text-gray-200 mx-auto mb-10">
-                Asegura 60 kg anuales de la mejor variedad Navelina por solo 40€/año. Tú eliges cuándo recolectamos. Nosotros cuidamos de tu árbol en El Romaní.
+            <p class="mt-4 max-w-2xl text-xl text-gray-200 mx-auto mb-8 font-medium">
+                Asegura 60 kg anuales de la inigualable variedad Navelina por solo 40€/año. <span class="text-white font-bold bg-green-600/30 px-2 py-1 rounded">¡A solo 0,66€ el kilo!</span>
+                <br>Tú eliges cuándo recolectamos. Nosotros lo cuidamos en El Romaní.
             </p>
+            <div class="flex flex-wrap justify-center items-center gap-6 mb-10 text-sm text-gray-300 font-semibold">
+                <div class="flex items-center"><i class="fa-solid fa-check-circle text-corpGreen mr-2 text-lg"></i> 100% Libre de Ceras</div>
+                <div class="flex items-center"><i class="fa-solid fa-check-circle text-corpGreen mr-2 text-lg"></i> Envío en 24h/48h</div>
+                <div class="flex items-center"><i class="fa-solid fa-check-circle text-corpGreen mr-2 text-lg"></i> Trato directo con Jose</div>
+            </div>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <button onclick="openModal('reservaModal')" class="bg-corpOrange text-white px-8 py-4 rounded-full font-bold text-lg shadow-[0_0_20px_rgba(243,112,33,0.5)] hover:bg-orange-600 transition-all transform hover:-translate-y-1">
-                    <i class="fa-solid fa-tree mr-2"></i> Quiero Apadrinar
+                <button onclick="openModal('reservaModal')" class="bg-corpOrange text-white px-8 py-4 rounded-full font-bold text-lg shadow-[0_0_20px_rgba(243,112,33,0.5)] hover:bg-orange-500 transition-all transform hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(243,112,33,0.8)]">
+                    <i class="fa-solid fa-tree mr-2"></i> Reservar mi Naranjo Ahora
                 </button>
                 <button onclick="openModal('dudasModal')" class="bg-white/10 backdrop-blur-md border border-white/30 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white/20 transition-all">
                     <i class="fa-solid fa-question-circle mr-2"></i> Tengo Dudas
                 </button>
             </div>
+            <p class="mt-6 text-sm text-gray-400"><i class="fa-solid fa-lock mr-1"></i> Reserva 100% Segura. Pago posterior al confirmar disponibilidad.</p>
         </div>
     </section>
 
