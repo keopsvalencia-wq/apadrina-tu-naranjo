@@ -20,16 +20,30 @@ function closeModal(modalId) {
 }
 
 // Envío del Formulario de Dudas
-function submitDudas(e) {
+async function submitDudas(e) {
     e.preventDefault();
-    // Aquí iría el envío real (AJAX/Fetch) a Backend o Email...
     
-    // Mostrar estado de éxito
-    document.getElementById('dudas-form-container').classList.add('hidden');
-    document.getElementById('dudas-success').classList.remove('hidden');
+    const form = e.target;
+    const formData = new FormData(form);
     
-    // Al resetear y si lo vuelven a abrir, restauramos estado (opcional, para esta Demo estará bien así o limpiar forms)
-    document.getElementById('form-dudas').reset();
+    try {
+        await fetch('https://formsubmit.co/ajax/info@apadrinatunaranjo.es', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json'
+            },
+            body: formData
+        });
+        
+        // Mostrar estado de éxito
+        document.getElementById('dudas-form-container').classList.add('hidden');
+        document.getElementById('dudas-success').classList.remove('hidden');
+        
+        form.reset();
+    } catch (error) {
+        console.error('Error enviando formulario:', error);
+        alert('Hubo un error al enviar el mensaje. Por favor, inténtelo de nuevo.');
+    }
 }
 
 // Al cerrar modal Dudas, restauramos su vista normal
