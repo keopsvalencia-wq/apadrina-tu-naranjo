@@ -46,15 +46,6 @@ async function submitDudas(e) {
     }
 }
 
-// Al cerrar modal Dudas, restauramos su vista normal
-document.getElementById('dudasModal').addEventListener('click', function(e) {
-    if (e.target.closest('button[onclick="closeModal(\'dudasModal\')"]') || e.target === this.querySelector('div[onclick="closeModal(\'dudasModal\')"]')) {
-        setTimeout(() => {
-            document.getElementById('dudas-form-container').classList.remove('hidden');
-            document.getElementById('dudas-success').classList.add('hidden');
-        }, 500);
-    }
-});
 
 // Update Contract en tiempo real
 function updateContract() {

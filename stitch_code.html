@@ -91,20 +91,16 @@
       min-height: max(884px, 100dvh);
     }
   </style>
-  
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
+  </head>
 <body class="bg-background text-on-background font-body selection:bg-primary-container selection:text-on-primary-container">
 <!-- TopAppBar -->
 <header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-stone-900/80 backdrop-blur-xl shadow-sm">
 <nav class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
 <div class="flex items-center gap-2">
-<img src="logo.png" alt="Apadrina tu Naranjo" class="h-14 w-auto object-contain rounded">
+<span class="material-symbols-outlined text-orange-600" data-icon="potted_plant">potted_plant</span>
 <span class="font-manrope font-black text-2xl tracking-tighter text-orange-700">Apadrina tu Naranjo</span>
 </div>
-<button onclick="openModal('reservaModal')" class="hidden md:block bg-primary-container text-white px-6 py-2 rounded-xl font-bold transition-all active:scale-95">
+<button class="hidden md:block bg-primary-container text-white px-6 py-2 rounded-xl font-bold transition-all active:scale-95">
                 Apadrinar
             </button>
 </nav>
@@ -126,10 +122,10 @@
                         Disfruta de 60kg de naranjas navelinas recién recolectadas por solo 40€ al año. Directo del campo a tu mesa.
                     </p>
 <div class="flex flex-col sm:flex-row gap-4">
-<button onclick="openModal('reservaModal')" class="bg-primary text-white font-headline font-bold px-8 py-4 rounded-xl shadow-lg hover:bg-primary-container transition-all active:scale-95">
+<button class="bg-primary text-white font-headline font-bold px-8 py-4 rounded-xl shadow-lg hover:bg-primary-container transition-all active:scale-95">
                             Quiero Apadrinar
                         </button>
-<button onclick="document.getElementById('huerto').scrollIntoView({behavior:'smooth'})" class="border-2 border-secondary text-secondary font-headline font-bold px-8 py-4 rounded-xl hover:bg-secondary/5 transition-all active:scale-95">
+<button class="border-2 border-secondary text-secondary font-headline font-bold px-8 py-4 rounded-xl hover:bg-secondary/5 transition-all active:scale-95">
                             Conocer más
                         </button>
 </div>
@@ -139,7 +135,7 @@
 <!-- How it Works Section - Bento Style -->
 <section class="py-24 px-6 max-w-7xl mx-auto">
 <div class="text-center mb-16">
-<h2 id="huerto" class="font-headline font-black text-4xl tracking-tighter mb-4 pt-16">Tu huerto digital</h2>
+<h2 class="font-headline font-black text-4xl tracking-tighter mb-4">Tu huerto digital</h2>
 <p class="text-on-surface-variant">Tres pasos para revolucionar tu consumo.</p>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -211,7 +207,7 @@
 <span class="font-bold">0,66 €/kg</span>
 </div>
 </div>
-<button onclick="openModal('reservaModal')" class="w-full bg-primary text-white font-headline font-black py-5 rounded-2xl text-xl hover:scale-[1.02] active:scale-95 transition-all">
+<button class="w-full bg-primary text-white font-headline font-black py-5 rounded-2xl text-xl hover:scale-[1.02] active:scale-95 transition-all">
                         Quiero mi Naranjo
                     </button>
 </div>
@@ -261,28 +257,25 @@
 </section>
 <!-- Contact Section -->
 <section class="py-24 px-6 bg-surface-container-low border-t border-surface-variant">
-<div id="dudas-form-container" class="max-w-xl mx-auto bg-white p-10 rounded-[2.5rem] editorial-shadow">
+<div class="max-w-xl mx-auto bg-white p-10 rounded-[2.5rem] editorial-shadow">
 <h2 class="font-headline font-black text-3xl mb-8 tracking-tighter text-center">¿Tienes dudas? Escríbenos</h2>
-<form id="form-dudas" onsubmit="submitDudas(event)" class="space-y-6">
-<input type="hidden" name="_captcha" value="false">
-<input type="hidden" name="_subject" value="Nueva duda desde Landing Page Apadrina Tu Naranjo">
+<form class="space-y-6">
 <div>
 <label class="block text-sm font-bold text-on-surface-variant mb-2 uppercase tracking-widest">Nombre Completo</label>
-<input class="w-full bg-surface-container-highest border-none border-b-2 border-outline-variant focus:ring-0 focus:border-primary rounded-lg py-4 px-4" placeholder="Juan Pérez" type="text" id="dudas-nombre" name="nombre" required />
+<input class="w-full bg-surface-container-highest border-none border-b-2 border-outline-variant focus:ring-0 focus:border-primary rounded-lg py-4 px-4" placeholder="Juan Pérez" type="text"/>
 </div>
 <div>
 <label class="block text-sm font-bold text-on-surface-variant mb-2 uppercase tracking-widest">Email</label>
-<input class="w-full bg-surface-container-highest border-none border-b-2 border-outline-variant focus:ring-0 focus:border-primary rounded-lg py-4 px-4" placeholder="juan@ejemplo.com" type="email" id="dudas-email" name="email" required />
+<input class="w-full bg-surface-container-highest border-none border-b-2 border-outline-variant focus:ring-0 focus:border-primary rounded-lg py-4 px-4" placeholder="juan@ejemplo.com" type="email"/>
 </div>
 <div>
 <label class="block text-sm font-bold text-on-surface-variant mb-2 uppercase tracking-widest">Mensaje</label>
-<textarea id="dudas-mensaje" name="mensaje" required class="w-full bg-surface-container-highest border-none border-b-2 border-outline-variant focus:ring-0 focus:border-primary rounded-lg py-4 px-4 h-32" placeholder="Cuéntanos en qué podemos ayudarte..."></textarea>
+<textarea class="w-full bg-surface-container-highest border-none border-b-2 border-outline-variant focus:ring-0 focus:border-primary rounded-lg py-4 px-4 h-32" placeholder="Cuéntanos en qué podemos ayudarte..."></textarea>
 </div>
-<button type="submit" class="w-full bg-secondary text-white font-headline font-bold py-5 rounded-2xl hover:bg-secondary-container hover:text-on-secondary-container transition-all">
+<button class="w-full bg-secondary text-white font-headline font-bold py-5 rounded-2xl hover:bg-secondary-container hover:text-on-secondary-container transition-all">
                         Enviar mensaje
                     </button>
 </form>
-<div id="dudas-success" class="hidden mt-4 bg-green-100 p-4 rounded text-green-800 text-center font-bold">¡Mensaje enviado con éxito! Jose te contactará pronto.</div>
 </div>
 </section>
 </main>
@@ -322,135 +315,4 @@
 <span class="font-inter text-[11px] font-semibold uppercase tracking-wider">Perfil</span>
 </a>
 </nav>
-<!-- MODALES -->
-
-    <!-- Formulario 2: Reserva (Split view) -->
-    <div id="reservaModal" class="fixed inset-0 z-50 hidden overflow-hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-        <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:p-0">
-            <div class="fixed inset-0 bg-gray-900 bg-opacity-90 transition-opacity backdrop-blur-md" onclick="closeModal('reservaModal')"></div>
-
-            <div class="inline-block align-bottom bg-white rounded-xl text-left shadow-2xl transform transition-all sm:my-8 sm:align-middle w-full max-w-6xl z-50 h-[90vh] flex flex-col relative">
-                
-                <div class="absolute top-0 right-0 p-4 z-10">
-                    <button type="button" onclick="closeModal('reservaModal')" class="bg-white rounded-full p-2 text-gray-600 hover:text-gray-900 shadow-md focus:outline-none">
-                        <i class="fa-solid fa-xmark text-xl"></i>
-                    </button>
-                </div>
-
-                <div class="flex flex-col lg:flex-row h-full overflow-hidden">
-                    
-                    <!-- Panel de Formulario -->
-                    <div id="reserva-form-container" class="lg:w-1/2 overflow-y-auto p-6 sm:p-10 hide-scrollbar bg-gray-50 border-r border-gray-200">
-                        <h2 class="text-3xl font-extrabold text-gray-900 mb-2">Apadrina tu Naranjo</h2>
-                        <p class="text-gray-600 mb-8 border-b pb-4">Rellena tus datos para el contrato de reserva. Pagarás los 40€ cuando Jose te confirme la disponibilidad.</p>
-                        
-                        <form id="form-reserva" onsubmit="submitReserva(event)" class="space-y-5">
-                            <div>
-                                <label for="reserva-nombre" class="block text-sm font-bold text-gray-700">Nombre Completo</label>
-                                <input type="text" id="reserva-nombre" required class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm py-3 px-4 focus:ring-corpOrange focus:border-corpOrange" oninput="updateContract()">
-                            </div>
-                            <div>
-                                <label for="reserva-dni" class="block text-sm font-bold text-gray-700">DNI / NIE</label>
-                                <input type="text" id="reserva-dni" required class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm py-3 px-4 focus:ring-corpOrange focus:border-corpOrange" oninput="updateContract()">
-                            </div>
-                            <div>
-                                <label for="reserva-direccion" class="block text-sm font-bold text-gray-700">Dirección de Envío Completa</label>
-                                <input type="text" id="reserva-direccion" required placeholder="Calle, Número, Piso, CP, Ciudad, Provincia" class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm py-3 px-4 focus:ring-corpOrange focus:border-corpOrange" oninput="updateContract()">
-                            </div>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                                <div>
-                                    <label for="reserva-email" class="block text-sm font-bold text-gray-700">Email</label>
-                                    <input type="email" id="reserva-email" required class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm py-3 px-4 focus:ring-corpOrange focus:border-corpOrange">
-                                </div>
-                                <div>
-                                    <label for="reserva-telefono" class="block text-sm font-bold text-gray-700">Teléfono</label>
-                                    <input type="tel" id="reserva-telefono" required class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm py-3 px-4 focus:ring-corpOrange focus:border-corpOrange">
-                                </div>
-                            </div>
-                            <div>
-                                <label for="reserva-nombre-arbol" class="block text-sm font-bold text-gray-700">Nombre para el Árbol (para la tablilla)</label>
-                                <input type="text" id="reserva-nombre-arbol" required class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm py-3 px-4 focus:ring-corpOrange focus:border-corpOrange bg-orange-50 border-orange-200">
-                                <p class="text-xs text-gray-500 mt-1">Este nombre estará físicamente en tu árbol.</p>
-                            </div>
-
-                            <div class="pt-6 border-t border-gray-200 mt-6 flex justify-end">
-                                <button type="submit" class="w-full lg:w-auto flex items-center justify-center bg-corpGreen text-white px-8 py-4 rounded-full font-bold shadow-lg hover:bg-green-700 transition">
-                                    <i class="fa-solid fa-file-signature mr-2"></i> Generar Contrato (Sin Pago Ahora)
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-
-                    <!-- Panel de Previsualización Contrato -->
-                    <div id="reserva-preview-container" class="lg:w-1/2 bg-gray-200 p-4 sm:p-8 overflow-y-auto hidden lg:flex flex-col items-center justify-center">
-                        <div class="w-full max-w-lg bg-white shadow-2xl p-8 rounded-lg doc-preview" id="contract-document">
-                            
-                            <div class="text-center mb-6">
-                                <h1 class="text-2xl font-serif font-bold text-gray-900 border-b-2 border-gray-800 pb-2 inline-block">Apadrina tu Naranjo</h1>
-                                <p class="italic text-sm text-gray-600 mt-2">Naranjas valencianas directas del campo a tu mesa.</p>
-                                <h2 class="text-lg font-bold mt-4 bg-gray-100 p-2">CONTRATO DE APADRINAMIENTO Y RESERVA DE COSECHA</h2>
-                            </div>
-
-                            <div class="text-sm space-y-4 text-gray-800">
-                                <div class="bg-gray-50 p-4 border border-gray-200">
-                                    <p><strong>UBICACIÓN:</strong> El Romaní (Valencia).</p>
-                                    <p><strong>PRODUCTOR:</strong> Jose Atienza con DNI 22.619.580-T.</p>
-                                    <p><strong>PADRINO:</strong> <span id="doc-nombre" class="text-corpOrange font-bold underline decoration-dotted decoration-gray-400">[Tu Nombre]</span> con DNI <span id="doc-dni" class="text-corpOrange font-bold underline decoration-dotted decoration-gray-400">[Tu DNI]</span>.</p>
-                                    <p><strong>DIRECCIÓN:</strong> <span id="doc-direccion" class="text-corpOrange font-bold underline decoration-dotted decoration-gray-400">[Tu Dirección]</span>.</p>
-                                </div>
-
-                                <p><strong>1. OBJETO:</strong> El presente documento tiene como objetivo regular la relación de apadrinamiento de un ejemplar de naranjo (Navelina) situado en las parcelas gestionadas por Jose Atienza en El Romaní. Este acuerdo no constituye una transferencia de propiedad del árbol ni de la tierra, sino un derecho de reserva sobre su producción estipulada abajo en el contrato.</p>
-                                
-                                <p><strong>2. DERECHOS DEL PADRINO:</strong> Bautismo (nombre en tablilla). Reserva de Cosecha: Exclusiva de hasta 60 kg de Navelina, recolectadas y servidas según lo desee, con un coste de 40€ por temporada. Transparencia y Visitas a la finca.</p>
-                                
-                                <p><strong>3. OBLIGACIONES:</strong> Cultivo Responsable, Mantenimiento y Garantía de Origen (100% de su naranjo).</p>
-                                
-                                <p><strong>4. LOGÍSTICA:</strong> Recolección bajo demanda. Gastos de Envío no incluidos en cuota inicial (pago según acuerdo).</p>
-                                
-                                <p><strong>5 y 6. RIESGOS Y DURACIÓN:</strong> Fuerza mayor cubierta con otros árboles de la finca. Duración: 1 temporada citrícola completa. Renovación por mutuo acuerdo.</p>
-                                
-                                <div class="mt-10 grid grid-cols-2 gap-8 text-center pt-8 border-t border-gray-300">
-                                    <div>
-                                        <p class="mb-8">El Productor</p>
-                                        <p class="font-serif italic text-gray-500 signature-font text-2xl">Jose Atienza</p>
-                                        <p class="border-t border-gray-400 mt-2 mx-4 pt-1">Jose Atienza</p>
-                                    </div>
-                                    <div>
-                                        <p class="mb-8">El Padrino</p>
-                                        <p class="font-serif italic text-corpOrange signature-font text-2xl h-8" id="doc-firma"></p>
-                                        <p class="border-t border-gray-400 mt-2 mx-4 pt-1"><span id="doc-firma-nombre">[Nombre Padrino]</span></p>
-                                    </div>
-                                </div>
-                                <p class="text-xs text-center text-gray-500 mt-6 italic">Nota: El contrato será oficial al recibir el pago.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Mensaje Éxito Reserva -->
-                    <div id="reserva-success" class="hidden w-full h-full flex items-center justify-center bg-white p-6">
-                        <div class="text-center max-w-lg">
-                            <div class="mx-auto flex flex-col items-center justify-center p-8 bg-green-50 rounded-2xl border-2 border-green-200 mb-6">
-                                <i class="fa-solid fa-file-arrow-down text-5xl text-green-500 mb-4 animate-bounce"></i>
-                                <h3 class="text-3xl font-bold text-gray-900 mb-2">¡Contrato Generado!</h3>
-                                <p class="text-lg text-gray-700">Tu PDF se ha descargado de forma automática.</p>
-                            </div>
-                            <div class="bg-orange-50 text-orange-800 p-6 rounded-xl text-left border border-orange-200">
-                                <h4 class="font-bold flex items-center mb-2"><i class="fa-solid fa-circle-exclamation mr-2"></i> Próximos pasos</h4>
-                                <p class="mb-3">Aún no se ha realizado ningún cobro. Tu contrato está pendiente de validación.</p>
-                                <p><strong>Jose Atienza se pondrá en contacto contigo pronto</strong> para confirmar ras disponibilidad, gestionar el pago de los 40€ y validar el acuerdo de forma oficial.</p>
-                            </div>
-                            <button onclick="closeModal('reservaModal')" class="mt-8 bg-gray-900 text-white px-8 py-3 rounded-full font-bold hover:bg-gray-800 transition shadow-lg w-full">
-                                Volver al inicio
-                            </button>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Script App -->
-    <script src="js/app.js"></script>
-
 </body></html>
