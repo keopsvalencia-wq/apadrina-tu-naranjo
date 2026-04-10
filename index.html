@@ -102,7 +102,6 @@
 <nav class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
 <div class="flex items-center gap-2">
 <img src="logo.png" alt="Apadrina tu Naranjo" class="h-14 w-auto object-contain rounded">
-<span class="font-manrope font-black text-2xl tracking-tighter text-orange-700">Apadrina tu Naranjo</span>
 </div>
 <button onclick="openModal('reservaModal')" class="hidden md:block bg-primary-container text-white px-6 py-2 rounded-xl font-bold transition-all active:scale-95">
                 Apadrinar
@@ -259,6 +258,55 @@
 </div>
 </div>
 </section>
+<!-- FAQ Section -->
+<section id="faq" class="py-24 px-6 max-w-4xl mx-auto">
+<div class="text-center mb-16">
+<h2 class="font-headline font-black text-4xl tracking-tighter mb-4 pt-4">Preguntas Frecuentes</h2>
+<p class="text-on-surface-variant">Resolvemos las dudas más comunes de nuestros padrinos.</p>
+</div>
+<div class="space-y-4">
+<!-- Pregunta 1 -->
+<details class="group bg-surface-container-low rounded-2xl p-6 editorial-shadow transition-all hover:bg-surface-container-high cursor-pointer">
+<summary class="flex justify-between items-center font-headline font-bold text-xl text-on-surface list-none">
+¿Cuándo recibiré mis naranjas?
+<span class="material-symbols-outlined text-primary group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<p class="mt-4 text-on-surface-variant leading-relaxed">
+Las naranjas (variedad Navelinas) alcanzan su punto óptimo de maduración natural en otoño/invierno. La temporada de envíos suele ser de noviembre a mayo. Jose te avisará en cuanto estén listas para ser enviadas directas del árbol a tu casa.
+</p>
+</details>
+<!-- Pregunta 2 -->
+<details class="group bg-surface-container-low rounded-2xl p-6 editorial-shadow transition-all hover:bg-surface-container-high cursor-pointer">
+<summary class="flex justify-between items-center font-headline font-bold text-xl text-on-surface list-none">
+¿Qué pasa si mi árbol no da 60 kg de cosecha?
+<span class="material-symbols-outlined text-primary group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<p class="mt-4 text-on-surface-variant leading-relaxed">
+La naturaleza es impredecible, pero tu recompensa está garantizada. Si tu árbol (debido al clima o una mala añada) produce menos cantidad, nosotros completamos tus 60 kg con naranjas de otro árbol hermano de la misma finca. Nunca te quedarás sin naranjas.
+</p>
+</details>
+<!-- Pregunta 3 -->
+<details class="group bg-surface-container-low rounded-2xl p-6 editorial-shadow transition-all hover:bg-surface-container-high cursor-pointer">
+<summary class="flex justify-between items-center font-headline font-bold text-xl text-on-surface list-none">
+¿Tengo que pagar los 40€ ahora mismo?
+<span class="material-symbols-outlined text-primary group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<p class="mt-4 text-on-surface-variant leading-relaxed">
+No. Rellenas tus datos y generas el contrato como una solicitud de reserva gratuita. Jose recibirá tu solicitud y contactará contigo mediante WhatsApp o Email para confirmar la disponibilidad y darte indicaciones para realizar el pago de los 40€ anuales (Bizum o transferencia).
+</p>
+</details>
+<!-- Pregunta 4 -->
+<details class="group bg-surface-container-low rounded-2xl p-6 editorial-shadow transition-all hover:bg-surface-container-high cursor-pointer">
+<summary class="flex justify-between items-center font-headline font-bold text-xl text-on-surface list-none">
+¿Puedo ir a visitar mi naranjo?
+<span class="material-symbols-outlined text-primary group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<p class="mt-4 text-on-surface-variant leading-relaxed">
+¡Por supuesto! Uno de los derechos del padrino es poder visitar su árbol. Ponte en contacto con nosotros para acordar una visita a los huertos en El Romaní (Valencia), echarte fotos con tu tablilla, y probar la fruta in situ cuando es temporada.
+</p>
+</details>
+</div>
+</section>
 <!-- Contact Section -->
 <section class="py-24 px-6 bg-surface-container-low border-t border-surface-variant">
 <div id="dudas-form-container" class="max-w-xl mx-auto bg-white p-10 rounded-[2.5rem] editorial-shadow">
@@ -292,14 +340,14 @@
 <div class="flex flex-col items-center md:items-start">
 <span class="font-manrope font-bold text-orange-700 text-2xl mb-2">Apadrina tu Naranjo</span>
 <p class="font-inter text-sm text-stone-600 dark:text-stone-400 text-center md:text-left max-w-xs">
-                    © 2024 Apadrina tu Naranjo - Cultivando el futuro con precisión.
+                    © 2026 Apadrina tu Naranjo - Cultivando el futuro con precisión.
                 </p>
 </div>
 <div class="flex flex-wrap justify-center gap-6">
-<a class="font-inter text-sm text-stone-500 hover:text-orange-600 transition-all" href="#">El Huerto</a>
-<a class="font-inter text-sm text-stone-500 hover:text-orange-600 transition-all" href="#">Sostenibilidad</a>
-<a class="font-inter text-sm text-stone-500 hover:text-orange-600 transition-all" href="#">Preguntas Frecuentes</a>
-<a class="font-inter text-sm text-stone-500 hover:text-orange-600 transition-all" href="#">Privacidad</a>
+<a class="font-inter text-sm text-stone-500 hover:text-orange-600 transition-all" href="#huerto">El Huerto</a>
+<a class="font-inter text-sm text-stone-500 hover:text-orange-600 transition-all" onclick="openModal('reservaModal')" href="javascript:void(0);">Apadrinar</a>
+<a class="font-inter text-sm text-stone-500 hover:text-orange-600 transition-all" href="#faq">Preguntas Frecuentes</a>
+<a class="font-inter text-sm text-stone-500 hover:text-orange-600 transition-all" href="#contacto">Contacto</a>
 </div>
 </div>
 </footer>
@@ -309,17 +357,17 @@
 <span class="material-symbols-outlined" data-icon="home">home</span>
 <span class="font-inter text-[11px] font-semibold uppercase tracking-wider">Inicio</span>
 </a>
-<a class="flex flex-col items-center justify-center text-stone-500 dark:text-stone-400 hover:bg-stone-100 transition-transform active:scale-90 duration-150" href="#">
+<a class="flex flex-col items-center justify-center text-stone-500 dark:text-stone-400 hover:bg-stone-100 transition-transform active:scale-90 duration-150" href="#huerto">
 <span class="material-symbols-outlined" data-icon="agriculture">agriculture</span>
 <span class="font-inter text-[11px] font-semibold uppercase tracking-wider">Huerto</span>
 </a>
-<a class="flex flex-col items-center justify-center text-stone-500 dark:text-stone-400 hover:bg-stone-100 transition-transform active:scale-90 duration-150" href="#">
+<a class="flex flex-col items-center justify-center text-stone-500 dark:text-stone-400 hover:bg-stone-100 transition-transform active:scale-90 duration-150" onclick="openModal('reservaModal')" href="javascript:void(0);">
 <span class="material-symbols-outlined" data-icon="favorite">favorite</span>
 <span class="font-inter text-[11px] font-semibold uppercase tracking-wider">Adoptar</span>
 </a>
-<a class="flex flex-col items-center justify-center text-stone-500 dark:text-stone-400 hover:bg-stone-100 transition-transform active:scale-90 duration-150" href="#">
+<a class="flex flex-col items-center justify-center text-stone-500 dark:text-stone-400 hover:bg-stone-100 transition-transform active:scale-90 duration-150" href="#contacto">
 <span class="material-symbols-outlined" data-icon="person">person</span>
-<span class="font-inter text-[11px] font-semibold uppercase tracking-wider">Perfil</span>
+<span class="font-inter text-[11px] font-semibold uppercase tracking-wider">Contacto</span>
 </a>
 </nav>
 <!-- MODALES -->
@@ -347,34 +395,34 @@
                         <form id="form-reserva" onsubmit="submitReserva(event)" class="space-y-5">
                             <div>
                                 <label for="reserva-nombre" class="block text-sm font-bold text-gray-700">Nombre Completo</label>
-                                <input type="text" id="reserva-nombre" required class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm py-3 px-4 focus:ring-corpOrange focus:border-corpOrange" oninput="updateContract()">
+                                <input type="text" id="reserva-nombre" required class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm py-3 px-4 focus:ring-primary focus:border-primary" oninput="updateContract()">
                             </div>
                             <div>
                                 <label for="reserva-dni" class="block text-sm font-bold text-gray-700">DNI / NIE</label>
-                                <input type="text" id="reserva-dni" required class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm py-3 px-4 focus:ring-corpOrange focus:border-corpOrange" oninput="updateContract()">
+                                <input type="text" id="reserva-dni" required class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm py-3 px-4 focus:ring-primary focus:border-primary" oninput="updateContract()">
                             </div>
                             <div>
                                 <label for="reserva-direccion" class="block text-sm font-bold text-gray-700">Dirección de Envío Completa</label>
-                                <input type="text" id="reserva-direccion" required placeholder="Calle, Número, Piso, CP, Ciudad, Provincia" class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm py-3 px-4 focus:ring-corpOrange focus:border-corpOrange" oninput="updateContract()">
+                                <input type="text" id="reserva-direccion" required placeholder="Calle, Número, Piso, CP, Ciudad, Provincia" class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm py-3 px-4 focus:ring-primary focus:border-primary" oninput="updateContract()">
                             </div>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                                 <div>
                                     <label for="reserva-email" class="block text-sm font-bold text-gray-700">Email</label>
-                                    <input type="email" id="reserva-email" required class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm py-3 px-4 focus:ring-corpOrange focus:border-corpOrange">
+                                    <input type="email" id="reserva-email" required class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm py-3 px-4 focus:ring-primary focus:border-primary">
                                 </div>
                                 <div>
                                     <label for="reserva-telefono" class="block text-sm font-bold text-gray-700">Teléfono</label>
-                                    <input type="tel" id="reserva-telefono" required class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm py-3 px-4 focus:ring-corpOrange focus:border-corpOrange">
+                                    <input type="tel" id="reserva-telefono" required class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm py-3 px-4 focus:ring-primary focus:border-primary">
                                 </div>
                             </div>
                             <div>
                                 <label for="reserva-nombre-arbol" class="block text-sm font-bold text-gray-700">Nombre para el Árbol (para la tablilla)</label>
-                                <input type="text" id="reserva-nombre-arbol" required class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm py-3 px-4 focus:ring-corpOrange focus:border-corpOrange bg-orange-50 border-orange-200">
+                                <input type="text" id="reserva-nombre-arbol" required class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm py-3 px-4 focus:ring-primary focus:border-primary bg-surface-container-low">
                                 <p class="text-xs text-gray-500 mt-1">Este nombre estará físicamente en tu árbol.</p>
                             </div>
 
                             <div class="pt-6 border-t border-gray-200 mt-6 flex justify-end">
-                                <button type="submit" class="w-full lg:w-auto flex items-center justify-center bg-corpGreen text-white px-8 py-4 rounded-full font-bold shadow-lg hover:bg-green-700 transition">
+                                <button type="submit" class="w-full lg:w-auto flex items-center justify-center bg-secondary text-white px-8 py-4 rounded-full font-bold shadow-lg hover:bg-secondary-container hover:text-on-secondary-container transition">
                                     <i class="fa-solid fa-file-signature mr-2"></i> Generar Contrato (Sin Pago Ahora)
                                 </button>
                             </div>
