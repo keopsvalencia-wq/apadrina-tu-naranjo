@@ -71,22 +71,31 @@ function submitReserva(e) {
     
     // Opciones para el PDF
     const opt = {
-        margin:       10,
+        margin:       15,
         filename:     `Contrato_Apadrinamiento_${nombrePadrino.replace(/\s+/g, '_')}.pdf`,
         image:        { type: 'jpeg', quality: 0.98 },
-        html2canvas:  { scale: 2 },
+        html2canvas:  { scale: 2, windowWidth: 800 },
         jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
     };
 
     // Agregar estilo temporal para PDF si es necesario u ocultar algo
-    element.style.padding = '30px';
-    element.classList.remove('shadow-2xl');
+    const originalWidth = element.style.width;
+    const originalMaxWidth = element.style.maxWidth;
+    const originalPadding = element.style.padding;
+    const originalXs = element.className;
+
+    element.style.padding = '40px';
+    element.style.width = '750px';
+    element.style.maxWidth = '750px';
+    element.classList.remove('shadow-2xl', 'shadow-xl', 'w-full', 'max-w-lg');
     
-    // Generación del PDF
+    // Mostramos un overlay de carga (si quieres) o al menos generamos el PDF
     html2pdf().set(opt).from(element).save().then(() => {
         // Restaurar estado visual
-        element.style.padding = '';
-        element.classList.add('shadow-2xl');
+        element.style.padding = originalPadding;
+        element.style.width = originalWidth;
+        element.style.maxWidth = originalMaxWidth;
+        element.className = originalXs;
         
         // Cambiar vista en Modal Formulario a Success
         document.getElementById('reserva-form-container').classList.add('hidden');
@@ -102,7 +111,7 @@ document.getElementById('reservaModal').addEventListener('click', function(e) {
         setTimeout(() => {
             document.getElementById('reserva-form-container').classList.remove('hidden');
             document.getElementById('reserva-preview-container').classList.remove('hidden');
-            document.getElementById('reserva-preview-container').classList.add('lg:flex');
+            document.getElementById('reserva-preview-container').classList.add('flex'); // Se asegura que quede como flex
             document.getElementById('reserva-success').classList.add('hidden');
             document.getElementById('form-reserva').reset();
             updateContract();
