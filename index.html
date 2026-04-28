@@ -9,6 +9,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
 <script id="tailwind-config">
       tailwind.config = {
         darkMode: "class",
@@ -95,6 +97,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body class="bg-background text-on-background font-body selection:bg-primary-container selection:text-on-primary-container">
 <!-- TopAppBar -->
@@ -102,6 +105,11 @@
 <nav class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
 <div class="flex items-center gap-2">
 <img src="logo.png" alt="Apadrina tu Naranjo" class="h-14 w-auto object-contain rounded">
+</div>
+<div class="hidden md:flex items-center gap-8">
+    <a href="#huerto" class="font-medium text-on-surface-variant hover:text-primary transition-colors">El Huerto</a>
+    <a href="#galeria" class="font-medium text-on-surface-variant hover:text-primary transition-colors italic decoration-primary/30 decoration-2">Fotos Reales</a>
+    <a href="#faq" class="font-medium text-on-surface-variant hover:text-primary transition-colors">Dudas</a>
 </div>
 <button onclick="openModal('reservaModal')" class="hidden md:block bg-primary-container text-white px-6 py-2 rounded-xl font-bold transition-all active:scale-95">
                 Apadrinar
@@ -113,23 +121,25 @@
 <section class="relative w-full min-h-[85vh] md:min-h-[795px] flex items-center overflow-hidden">
 <div class="absolute inset-0 z-0">
 <img class="w-full h-full object-cover" data-alt="Stunning sun-drenched Valencian orange grove at dawn with golden light filtering through vibrant green leaves and ripe fruit" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBqtnH_gB02KJsGM__TpfeuJYtfh6f4-ZJuj6juzejBtPYLBBOtzoix62uPsG1AODwGiH5I8eLnTT3GEKntYyncePZ7ZWSYvsCBt1mUjv1lD0pt5qx2PPqlWHdPHJLxxmbnX5EW-Uz8Nn5oietin6zHrxK_36VCIJKsxfh1NZzuZ0C4aF_ZtkbG1q9FVt566hveGD_yo3ibBvlF30ziD-852QJIDHRQBKeYQgJ7WEbWYLUcanCGDhg9wPbKd6pdGuRhXl4Qcwmkg"/>
-<div class="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-r from-background/90 md:from-background via-background/70 md:via-background/40 to-transparent"></div>
+<div class="absolute inset-0 bg-black/40 z-0"></div>
+<div class="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-r from-background/95 md:from-background via-background/60 md:via-background/30 to-transparent"></div>
 </div>
-<div class="relative z-10 max-w-7xl mx-auto px-6 py-12 md:py-20 w-full pt-20 md:pt-20">
-<div class="max-w-2xl bg-white/60 md:bg-transparent p-6 sm:p-8 md:p-0 rounded-3xl backdrop-blur-md md:backdrop-blur-none border border-white/30 md:border-transparent editoral-shadow md:shadow-none">
-<span class="inline-block px-3 py-1 mb-4 md:mb-6 rounded-full bg-secondary-container text-on-secondary-container font-label text-[10px] font-bold uppercase tracking-widest">Agrotech Sostenible</span>
-<h1 class="font-headline font-extrabold text-5xl md:text-6xl text-on-surface tracking-tighter leading-[1] mb-6">
-                        Apadrina tu <br class="hidden md:inline"/><span class="text-primary italic">Naranjo</span> en Valencia
-                    </h1>
-<p class="text-on-surface-variant font-medium text-lg md:text-xl max-w-lg mb-8 leading-relaxed">
-                        Disfruta de 60kg de naranjas navelinas recién recolectadas por solo 40€ al año. Directo del campo a tu mesa.
-                    </p>
-<div class="flex flex-col sm:flex-row gap-4 mt-6 animate-fade-in-up" style="animation-delay: 200ms;">
-<button onclick="openModal('reservaModal')" class="bg-primary text-white font-headline font-black px-8 py-4 rounded-xl text-lg hover:scale-105 active:scale-95 transition-all shadow-xl hover:shadow-2xl text-center">
-                    Quiero Apadrinar
-                </button>
-</div>
-</div>
+<div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-12 md:py-20 w-full pt-20 md:pt-20">
+    <div class="max-w-2xl bg-white/70 p-6 sm:p-10 md:p-12 rounded-[2.5rem] md:rounded-[3rem] backdrop-blur-xl shadow-2xl border border-white/50">
+        <span class="inline-block px-3 py-1 mb-4 md:mb-6 rounded-full bg-secondary-container text-on-secondary-container font-label text-[10px] font-bold uppercase tracking-widest border border-secondary/20">Agricultura Sostenible</span>
+        <h1 class="font-headline font-extrabold text-4xl sm:text-5xl md:text-6xl text-on-surface tracking-tighter leading-[1.1] sm:leading-[1] mb-6 drop-shadow-sm">
+            <span class="block mb-2 sm:mb-3">Apadrina tu <span class="text-white bg-[#f57c00] px-3 md:px-4 py-1 inline-block rounded-xl shadow-lg rotate-1 sm:scale-105 not-italic whitespace-nowrap mx-1">Naranjo</span></span>
+            <span class="block text-[2rem] sm:text-[inherit] leading-tight sm:leading-[1] mt-1 sm:mt-0">Naranjas Recién Recolectadas</span>
+        </h1>
+        <p class="text-on-surface-variant font-medium text-base sm:text-lg md:text-xl max-w-lg mb-8 leading-relaxed">
+            Naranjas de Valencia 100% naturales. Sin químicos post-cosecha ni esperas en cámaras frigoríficas. 60kg de fruta viva, directa de nuestro huerto a tu mesa.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 mt-6">
+            <button onclick="openModal('reservaModal')" class="bg-primary text-white font-headline font-black px-8 py-4 rounded-xl text-lg hover:scale-105 active:scale-95 transition-all shadow-xl hover:shadow-2xl text-center">
+                Quiero mi Árbol Natural
+            </button>
+        </div>
+    </div>
 </div>
 </section>
 <!-- How it Works Section - Bento Style -->
@@ -140,12 +150,13 @@
 </div>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 <!-- Step 1 -->
-<div class="bg-surface-container-low p-8 rounded-[2rem] editorial-shadow group transition-transform hover:-translate-y-2">
-<div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-8 shadow-sm">
-<span class="material-symbols-outlined text-4xl text-primary" data-icon="tree">park</span>
-</div>
-<h3 class="font-headline font-bold text-2xl mb-4">Elige tu Árbol</h3>
-<p class="text-on-surface-variant leading-relaxed">Selecciona un naranjo en nuestra finca de Valencia. Le pondremos tu nombre y podrás seguir su crecimiento.</p>
+<div class="bg-surface-container-low p-8 rounded-[2rem] editorial-shadow group transition-transform hover:-translate-y-2 text-center md:text-left">
+    <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-8 shadow-sm mx-auto md:mx-0">
+        <span class="material-symbols-outlined text-4xl text-primary" data-icon="park">park</span>
+    </div>
+    <h3 class="font-headline font-bold text-2xl mb-4">Elige tu Árbol</h3>
+    <p class="text-on-surface-variant leading-relaxed italic">Para ti o como regalo único para un ser querido.</p>
+    <p class="text-on-surface-variant leading-relaxed mt-2">Selecciona un naranjo en nuestra finca de Valencia. Le pondremos el nombre que elijas en su tablilla y podrás seguir su evolución.</p>
 </div>
 <!-- Step 2 -->
 <div class="bg-surface-container-low p-8 rounded-[2rem] editorial-shadow group transition-transform hover:-translate-y-2">
@@ -156,16 +167,87 @@
 <p class="text-on-surface-variant leading-relaxed">Agricultores expertos miman tu árbol con tecnología de precisión y técnicas sostenibles.</p>
 </div>
 <!-- Step 3 -->
-<div class="bg-surface-container-low p-8 rounded-[2rem] editorial-shadow group transition-transform hover:-translate-y-2">
-<div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-8 shadow-sm">
-<span class="material-symbols-outlined text-4xl text-orange-600" data-icon="local_shipping">local_shipping</span>
-</div>
-<h3 class="font-headline font-bold text-2xl mb-4">Cosecha en Casa</h3>
-<p class="text-on-surface-variant leading-relaxed">Recibe tus 60kg de naranjas en el momento óptimo de maduración, directas del árbol.</p>
+<div class="bg-surface-container-low p-8 rounded-[2rem] editorial-shadow group transition-transform hover:-translate-y-2 text-center md:text-left">
+    <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-8 shadow-sm mx-auto md:mx-0">
+        <span class="material-symbols-outlined text-4xl text-orange-600" data-icon="local_shipping">local_shipping</span>
+    </div>
+    <h3 class="font-headline font-bold text-2xl mb-4">Cosecha en Casa</h3>
+    <p class="text-on-surface-variant leading-relaxed">De noviembre a marzo, tú decides cuándo y qué cantidad recibir hasta completar tus 60kg.</p>
+    <p class="text-on-surface-variant leading-relaxed mt-2 italic text-sm">Previo aviso, recolectamos exclusivamente tu pedido para asegurar que lleguen a tu mesa como si las acabaras de coger del árbol.</p>
 </div>
 </div>
 </section>
+
+<!-- Photo Gallery Section -->
+<section id="galeria" class="py-24 px-6 max-w-7xl mx-auto overflow-hidden scroll-mt-20">
+    <div class="text-center mb-16">
+        <span class="inline-block px-3 py-1 mb-4 rounded-full bg-primary/10 text-primary font-label text-[10px] font-bold uppercase tracking-widest border border-primary/20">Contenido 100% Real</span>
+        <h2 class="font-headline font-black text-4xl md:text-5xl tracking-tighter mb-4 text-on-surface">La Vida en el Huerto</h2>
+        <p class="text-on-surface-variant max-w-2xl mx-auto text-lg">Estas son las fotos reales de nuestras tierras en El Romaní (Valencia). Sin filtros, solo naranjos, sol y el trabajo diario de Jose y Alex.</p>
+    </div>
+    
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+        <!-- Foto 1: Grande Editorial -->
+        <a href="fotos/1.jpeg" class="glightbox group relative aspect-square md:aspect-auto md:row-span-2 md:col-span-2 overflow-hidden rounded-[2.5rem] editorial-shadow transition-all duration-500 hover:-translate-y-2">
+            <img src="fotos/1.jpeg" alt="Naranjos en El Romani" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-8">
+                <p class="text-white font-bold text-xl drop-shadow-md">Nuestros Árboles</p>
+            </div>
+        </a>
+
+        <!-- Foto 2 -->
+        <a href="fotos/2.jpeg" class="glightbox group relative aspect-square overflow-hidden rounded-[2.5rem] editorial-shadow transition-all duration-500 hover:-translate-y-2">
+            <img src="fotos/2.jpeg" alt="Fruto maduro" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+        </a>
+
+        <!-- Foto 3 -->
+        <a href="fotos/3.jpeg" class="glightbox group relative aspect-square overflow-hidden rounded-[2.5rem] editorial-shadow transition-all duration-500 hover:-translate-y-2">
+            <img src="fotos/3.jpeg" alt="Entorno natural" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+        </a>
+
+        <!-- Foto 4: Horizontal -->
+        <a href="fotos/4.jpeg" class="glightbox group relative aspect-video md:aspect-auto md:col-span-2 overflow-hidden rounded-[2.5rem] editorial-shadow transition-all duration-500 hover:-translate-y-2">
+            <img src="fotos/4.jpeg" alt="Cosecha de naranjas" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
+        </a>
+
+        <!-- Foto 5 -->
+        <a href="fotos/5.jpeg" class="glightbox group relative aspect-square overflow-hidden rounded-[2.5rem] editorial-shadow transition-all duration-500 hover:-translate-y-2">
+            <img src="fotos/5.jpeg" alt="Vistas de la finca" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+        </a>
+
+
+        <!-- Foto 7 -->
+        <a href="fotos/7.jpeg" class="glightbox group relative aspect-square overflow-hidden rounded-[2.5rem] editorial-shadow transition-all duration-500 hover:-translate-y-2">
+            <img src="fotos/7.jpeg" alt="Árbol en flor" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+        </a>
+
+        <!-- Foto 8 -->
+        <a href="fotos/8.jpeg" class="glightbox group relative aspect-square overflow-hidden rounded-[2.5rem] editorial-shadow transition-all duration-500 hover:-translate-y-2">
+            <img src="fotos/8.jpeg" alt="Naranjas navelinas" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+        </a>
+
+        <!-- Foto 9: Vertical/Larga -->
+        <a href="fotos/9.jpeg" class="glightbox group relative aspect-[3/4] md:aspect-auto md:row-span-2 overflow-hidden rounded-[2.5rem] editorial-shadow transition-all duration-500 hover:-translate-y-2">
+            <img src="fotos/9.jpeg" alt="Paisaje valenciano" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+        </a>
+
+        <!-- Foto 10 -->
+        <a href="fotos/10.jpeg" class="glightbox group relative aspect-square overflow-hidden rounded-[2.5rem] editorial-shadow transition-all duration-500 hover:-translate-y-2">
+            <img src="fotos/10.jpeg" alt="Detalle del tronco" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+        </a>
+    </div>
+</section>
+
 <!-- Product Details / Pricing -->
+
 <section class="bg-secondary text-white py-24 overflow-hidden relative">
 <div class="absolute right-0 top-0 opacity-10 pointer-events-none -mr-20 -mt-20">
 <span class="material-symbols-outlined text-[400px]" data-icon="agriculture">agriculture</span>
@@ -269,7 +351,7 @@
 <span class="material-symbols-outlined text-primary group-open:rotate-180 transition-transform">expand_more</span>
 </summary>
 <p class="mt-4 text-on-surface-variant leading-relaxed">
-Las naranjas (variedad Navelinas) alcanzan su punto óptimo de maduración natural en otoño/invierno. La temporada de envíos suele ser de noviembre a mayo. Jose te avisará en cuanto estén listas para ser enviadas directas del árbol a tu casa.
+Las naranjas (variedad Navelinas) alcanzan su punto óptimo de maduración natural en otoño/invierno. La temporada de envíos suele ser de noviembre a mayo. Jose y Alex te avisarán en cuanto estén listas para ser enviadas directas del árbol a tu casa.
 </p>
 </details>
 <!-- Pregunta 2 -->
@@ -289,7 +371,7 @@ La naturaleza es impredecible, pero tu recompensa está garantizada. Si tu árbo
 <span class="material-symbols-outlined text-primary group-open:rotate-180 transition-transform">expand_more</span>
 </summary>
 <p class="mt-4 text-on-surface-variant leading-relaxed">
-No. Rellenas tus datos y generas el contrato como una solicitud de reserva gratuita. Jose recibirá tu solicitud y contactará contigo mediante WhatsApp o Email para confirmar la disponibilidad y darte indicaciones para realizar el pago de los 40€ anuales (Bizum o transferencia).
+No. Rellenas tus datos y generas el contrato como una solicitud de reserva gratuita. Jose y Alex recibirán tu solicitud y contactarán contigo mediante WhatsApp o Email para confirmar la disponibilidad y darte indicaciones para realizar el pago de los 40€ anuales (Bizum o transferencia).
 </p>
 </details>
 <!-- Pregunta 4 -->
@@ -304,6 +386,43 @@ No. Rellenas tus datos y generas el contrato como una solicitud de reserva gratu
 </details>
 </div>
 </section>
+<!-- Comments Section -->
+<section id="comentarios" class="py-24 px-6 max-w-4xl mx-auto border-t border-surface-variant">
+    <div class="text-center mb-16 relative z-10">
+        <h2 class="font-headline font-black text-4xl tracking-tighter mb-4 flex items-center justify-center gap-3">
+            El tablón del huerto
+            <button onclick="toggleJoseMode(event)" type="button" class="text-surface-dim hover:text-primary transition-colors focus:outline-none opacity-50 hover:opacity-100 cursor-pointer" title="Acceso Jose">
+                <span class="material-symbols-outlined text-2xl">lock</span>
+            </button>
+        </h2>
+        <p class="text-on-surface-variant">¿Qué tal estaban las naranjas? Deja tu comentario para Jose y Alex, o lee lo que opinan otros padrinos.</p>
+    </div>
+
+    <!-- Formulario para dejar comentario -->
+    <div class="bg-surface-container-low p-8 rounded-[2rem] editorial-shadow mb-12">
+        <h3 class="font-headline font-bold text-2xl mb-6">Dejar un comentario</h3>
+        <form id="form-comentario" onsubmit="submitComentario(event)" class="space-y-4">
+            <div>
+                <input type="text" id="comentario-nombre" placeholder="Tu nombre" required class="w-full bg-surface-container-highest border-none rounded-lg py-3 px-4 focus:ring-primary focus:border-primary">
+            </div>
+            <div>
+                <textarea id="comentario-texto" placeholder="Escribe tu mensaje o cuéntanos tu experiencia..." required class="w-full bg-surface-container-highest border-none rounded-lg py-3 px-4 h-24 focus:ring-primary focus:border-primary"></textarea>
+            </div>
+            <button type="submit" id="comentario-submit" class="bg-primary text-white font-bold py-3 px-6 rounded-xl hover:bg-primary/90 transition-all flex items-center justify-center">
+                Publicar mensaje
+            </button>
+        </form>
+        <div id="comentario-success" class="hidden mt-4 bg-green-100 p-4 rounded text-green-800 font-bold text-center">¡Comentario publicado con éxito!</div>
+        <div id="comentario-error" class="hidden mt-4 bg-red-100 p-4 rounded text-red-800 font-bold text-center">Error al publicar, inténtalo de nuevo.</div>
+    </div>
+
+    <!-- Lista de comentarios -->
+    <div id="lista-comentarios" class="space-y-6">
+        <div class="text-center text-on-surface-variant animate-pulse py-8">Cultivando los comentarios...</div>
+        <!-- Comentarios inyectados por JS -->
+    </div>
+</section>
+
 <!-- Contact Section -->
 <section class="py-24 px-6 bg-surface-container-low border-t border-surface-variant">
 <div id="dudas-form-container" class="max-w-xl mx-auto bg-white p-10 rounded-[2.5rem] editorial-shadow">
@@ -327,7 +446,7 @@ No. Rellenas tus datos y generas el contrato como una solicitud de reserva gratu
                         Enviar mensaje
                     </button>
 </form>
-<div id="dudas-success" class="hidden mt-4 bg-green-100 p-4 rounded text-green-800 text-center font-bold">¡Mensaje enviado con éxito! Jose te contactará pronto.</div>
+<div id="dudas-success" class="hidden mt-4 bg-green-100 p-4 rounded text-green-800 text-center font-bold">¡Mensaje enviado con éxito! Jose y Alex te contactarán pronto.</div>
 </div>
 </section>
 </main>
@@ -342,6 +461,7 @@ No. Rellenas tus datos y generas el contrato como una solicitud de reserva gratu
 </div>
 <div class="flex flex-wrap justify-center gap-6">
 <a class="font-inter text-sm text-stone-500 hover:text-orange-600 transition-all" href="#huerto">El Huerto</a>
+<a class="font-inter text-sm text-stone-500 hover:text-orange-600 transition-all italic underline decoration-orange-200" href="#galeria">Fotos Reales</a>
 <a class="font-inter text-sm text-stone-500 hover:text-orange-600 transition-all" onclick="openModal('reservaModal')" href="javascript:void(0);">Apadrinar</a>
 <a class="font-inter text-sm text-stone-500 hover:text-orange-600 transition-all" href="#faq">Preguntas Frecuentes</a>
 <a class="font-inter text-sm text-stone-500 hover:text-orange-600 transition-all" href="mailto:info@apadrinatunaranjo.es">Contacto</a>
@@ -357,6 +477,10 @@ No. Rellenas tus datos y generas el contrato como una solicitud de reserva gratu
 <a class="flex flex-col items-center justify-center text-stone-500 dark:text-stone-400 hover:bg-stone-100 transition-transform active:scale-90 duration-150" href="#huerto">
 <span class="material-symbols-outlined" data-icon="agriculture">agriculture</span>
 <span class="font-inter text-[11px] font-semibold uppercase tracking-wider">Huerto</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-500 dark:text-stone-400 hover:bg-stone-100 transition-transform active:scale-90 duration-150" href="#galeria">
+<span class="material-symbols-outlined font-bold text-primary" data-icon="photo_library">photo_library</span>
+<span class="font-inter text-[11px] font-semibold uppercase tracking-wider text-primary">Fotos</span>
 </a>
 <a class="flex flex-col items-center justify-center text-stone-500 dark:text-stone-400 hover:bg-stone-100 transition-transform active:scale-90 duration-150" onclick="openModal('reservaModal')" href="javascript:void(0);">
 <span class="material-symbols-outlined" data-icon="favorite">favorite</span>
@@ -392,44 +516,50 @@ No. Rellenas tus datos y generas el contrato como una solicitud de reserva gratu
                         <form id="form-reserva" onsubmit="submitReserva(event)" class="space-y-5">
                             <div>
                                 <label for="reserva-nombre" class="block text-sm font-bold text-gray-700">Nombre Completo</label>
-                                <input type="text" id="reserva-nombre" required class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm py-3 px-4 focus:ring-primary focus:border-primary" oninput="updateContract()">
+                                <input type="text" id="reserva-nombre" name="nombre" required class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm py-3 px-4 focus:ring-primary focus:border-primary" oninput="updateContract()">
                             </div>
                             <div>
                                 <label for="reserva-dni" class="block text-sm font-bold text-gray-700">DNI / NIE</label>
-                                <input type="text" id="reserva-dni" required class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm py-3 px-4 focus:ring-primary focus:border-primary" oninput="updateContract()">
+                                <input type="text" id="reserva-dni" name="dni" required class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm py-3 px-4 focus:ring-primary focus:border-primary" oninput="updateContract()">
                             </div>
                             <div>
                                 <label for="reserva-direccion" class="block text-sm font-bold text-gray-700">Dirección de Envío Completa</label>
-                                <input type="text" id="reserva-direccion" required placeholder="Calle, Número, Piso, CP, Ciudad, Provincia" class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm py-3 px-4 focus:ring-primary focus:border-primary" oninput="updateContract()">
+                                <input type="text" id="reserva-direccion" name="direccion" required placeholder="Calle, Número, Piso, CP, Ciudad, Provincia" class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm py-3 px-4 focus:ring-primary focus:border-primary" oninput="updateContract()">
                             </div>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                                 <div>
                                     <label for="reserva-email" class="block text-sm font-bold text-gray-700">Email</label>
-                                    <input type="email" id="reserva-email" required class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm py-3 px-4 focus:ring-primary focus:border-primary">
+                                    <input type="email" id="reserva-email" name="email" required class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm py-3 px-4 focus:ring-primary focus:border-primary">
                                 </div>
                                 <div>
                                     <label for="reserva-telefono" class="block text-sm font-bold text-gray-700">Teléfono</label>
-                                    <input type="tel" id="reserva-telefono" required class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm py-3 px-4 focus:ring-primary focus:border-primary">
+                                    <input type="tel" id="reserva-telefono" name="telefono" required class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm py-3 px-4 focus:ring-primary focus:border-primary">
                                 </div>
                             </div>
-                            <div>
-                                <label for="reserva-nombre-arbol" class="block text-sm font-bold text-gray-700">Nombre para el Árbol (para la tablilla)</label>
-                                <input type="text" id="reserva-nombre-arbol" required class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm py-3 px-4 focus:ring-primary focus:border-primary bg-surface-container-low">
-                                <p class="text-xs text-gray-500 mt-1">Este nombre estará físicamente en tu árbol.</p>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                                <div>
+                                    <label for="reserva-nombre-arbol" class="block text-sm font-bold text-gray-700">Nombre para el Árbol</label>
+                                    <input type="text" id="reserva-nombre-arbol" name="nombreArbol" required class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm py-3 px-4 focus:ring-primary focus:border-primary bg-surface-container-low" placeholder="Ej: Naranjo de la Abuela">
+                                </div>
+                                <div>
+                                    <label for="reserva-fecha-arbol" class="block text-sm font-bold text-gray-700">Fecha Especial / Inicio</label>
+                                    <input type="date" id="reserva-fecha-arbol" name="fechaArbol" class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm py-3 px-4 focus:ring-primary focus:border-primary">
+                                </div>
                             </div>
+                            <p class="text-xs text-gray-500 mt-1">El nombre y la fecha estarán físicamente en la tablilla de tu árbol.</p>
 
                             <div class="pt-6 border-t border-gray-200 mt-6 flex justify-end">
                                 <button type="submit" class="w-full lg:w-auto flex items-center justify-center bg-secondary text-white px-8 py-4 rounded-full font-bold shadow-lg hover:bg-secondary-container hover:text-on-secondary-container transition">
-                                    <i class="fa-solid fa-file-signature mr-2"></i> Generar Contrato (Sin Pago Ahora)
+                                    <i class="fa-solid fa-paper-plane mr-2"></i> Enviar Solicitud de Reserva
                                 </button>
                             </div>
                         </form>
                     </div>
 
                     <!-- Panel de Previsualización Contrato -->
-                    <div id="reserva-preview-container" class="lg:w-1/2 bg-gray-200 p-4 sm:p-8 lg:overflow-y-auto flex flex-col items-center justify-start lg:justify-center">
+                    <div id="reserva-preview-container" class="lg:w-1/2 bg-gray-200 p-4 sm:p-8 lg:overflow-y-auto flex flex-col items-center justify-center">
                         <h3 class="text-lg font-bold text-gray-700 mb-4 lg:hidden w-full max-w-lg mt-4">Previsualización del contrato:</h3>
-                        <div class="w-full max-w-lg bg-white shadow-xl lg:shadow-2xl p-6 sm:p-8 rounded-lg doc-preview" id="contract-document">
+                        <div class="w-full max-w-lg bg-white shadow-xl lg:shadow-2xl p-6 sm:p-8 rounded-lg doc-preview mx-auto" id="contract-document">
                             
                             <div class="text-center mb-6">
                                 <h1 class="text-2xl font-serif font-bold text-gray-900 border-b-2 border-gray-800 pb-2 inline-block">Apadrina tu Naranjo</h1>
@@ -443,6 +573,11 @@ No. Rellenas tus datos y generas el contrato como una solicitud de reserva gratu
                                     <p><strong>PRODUCTOR:</strong> Jose Atienza con DNI 22.619.580-T.</p>
                                     <p><strong>PADRINO:</strong> <span id="doc-nombre" class="text-corpOrange font-bold underline decoration-dotted decoration-gray-400">[Tu Nombre]</span> con DNI <span id="doc-dni" class="text-corpOrange font-bold underline decoration-dotted decoration-gray-400">[Tu DNI]</span>.</p>
                                     <p><strong>DIRECCIÓN:</strong> <span id="doc-direccion" class="text-corpOrange font-bold underline decoration-dotted decoration-gray-400">[Tu Dirección]</span>.</p>
+                                    <div class="flex flex-wrap gap-x-4">
+                                        <p><strong>ÁRBOL:</strong> <span id="doc-arbol" class="text-corpOrange font-bold underline decoration-dotted decoration-gray-400 italic">[Nombre]</span></p>
+                                        <p><strong>FECHA ÁRBOL:</strong> <span id="doc-fecha-arbol" class="text-corpOrange font-bold underline decoration-dotted decoration-gray-400 italic">[Fecha]</span></p>
+                                    </div>
+                                    <p class="mt-4 text-right italic text-xs">Documento de reserva generado el <span id="fecha-contrato" class="font-bold underline decoration-dotted decoration-gray-300">___ de ___ de 2026</span></p>
                                 </div>
 
                                 <p><strong>1. OBJETO:</strong> El presente documento tiene como objetivo regular la relación de apadrinamiento de un ejemplar de naranjo (Navelina) situado en las parcelas gestionadas por Jose Atienza en El Romaní. Este acuerdo no constituye una transferencia de propiedad del árbol ni de la tierra, sino un derecho de reserva sobre su producción estipulada abajo en el contrato.</p>
@@ -455,19 +590,21 @@ No. Rellenas tus datos y generas el contrato como una solicitud de reserva gratu
                                 
                                 <p><strong>5 y 6. RIESGOS Y DURACIÓN:</strong> Fuerza mayor cubierta con otros árboles de la finca. Duración: 1 temporada citrícola completa. Renovación por mutuo acuerdo.</p>
                                 
-                                <div class="mt-10 grid grid-cols-2 gap-8 text-center pt-8 border-t border-gray-300">
+                                <div class="mt-4 grid grid-cols-2 gap-8 text-center pt-4 border-t border-gray-300">
                                     <div>
-                                        <p class="mb-8">El Productor</p>
-                                        <p class="font-serif italic text-gray-500 signature-font text-2xl">Jose Atienza</p>
-                                        <p class="border-t border-gray-400 mt-2 mx-4 pt-1">Jose Atienza</p>
+                                        <p class="mb-1">El Productor</p>
+                                        <div class="h-14 flex items-center justify-center mb-1">
+                                            <img src="firma_jose.png" alt="Firma Jose Atienza" class="max-h-full">
+                                        </div>
+                                        <p class="border-t border-gray-400 mx-4 pt-1">Jose Atienza</p>
                                     </div>
                                     <div>
-                                        <p class="mb-8">El Padrino</p>
+                                        <p class="mb-5">El Padrino</p>
                                         <p class="font-serif italic text-corpOrange signature-font text-2xl h-8" id="doc-firma"></p>
-                                        <p class="border-t border-gray-400 mt-2 mx-4 pt-1"><span id="doc-firma-nombre">[Nombre Padrino]</span></p>
+                                        <p class="border-t border-gray-400 mx-4 pt-1"><span id="doc-firma-nombre">[Nombre Padrino]</span></p>
                                     </div>
                                 </div>
-                                <p class="text-xs text-center text-gray-500 mt-6 italic">Nota: El contrato será oficial al recibir el pago.</p>
+                                <p class="text-[10px] text-center text-gray-400 mt-2 italic">Nota: El contrato será oficial al recibir el pago.</p>
                             </div>
                         </div>
                     </div>
@@ -476,14 +613,14 @@ No. Rellenas tus datos y generas el contrato como una solicitud de reserva gratu
                     <div id="reserva-success" class="hidden w-full h-full flex items-center justify-center bg-white p-6">
                         <div class="text-center max-w-lg">
                             <div class="mx-auto flex flex-col items-center justify-center p-8 bg-green-50 rounded-2xl border-2 border-green-200 mb-6">
-                                <i class="fa-solid fa-file-arrow-down text-5xl text-green-500 mb-4 animate-bounce"></i>
-                                <h3 class="text-3xl font-bold text-gray-900 mb-2">¡Contrato Generado!</h3>
-                                <p class="text-lg text-gray-700">Tu PDF se ha descargado de forma automática.</p>
+                                <i class="fa-solid fa-circle-check text-5xl text-green-500 mb-4 animate-bounce"></i>
+                                <h3 class="text-3xl font-bold text-gray-900 mb-2">¡Solicitud Enviada!</h3>
+                                <p class="text-lg text-gray-700">Tus datos han sido enviados correctamente.</p>
                             </div>
                             <div class="bg-orange-50 text-orange-800 p-6 rounded-xl text-left border border-orange-200">
                                 <h4 class="font-bold flex items-center mb-2"><i class="fa-solid fa-circle-exclamation mr-2"></i> Próximos pasos</h4>
-                                <p class="mb-3">Aún no se ha realizado ningún cobro. Tu contrato está pendiente de validación.</p>
-                                <p><strong>Jose Atienza se pondrá en contacto contigo pronto</strong> para confirmar ras disponibilidad, gestionar el pago de los 40€ y validar el acuerdo de forma oficial.</p>
+                                <p class="mb-3">Aún no se ha realizado ningún cobro. Tu solicitud está pendiente de validación.</p>
+                                <p><strong>Jose Atienza recibirá tus datos y se pondrá en contacto contigo pronto</strong> para confirmar la disponibilidad, gestionar el pago de los 40€ y enviarte el contrato oficial firmado.</p>
                             </div>
                             <button onclick="closeModal('reservaModal')" class="mt-8 bg-gray-900 text-white px-8 py-3 rounded-full font-bold hover:bg-gray-800 transition shadow-lg w-full">
                                 Volver al inicio
@@ -496,7 +633,19 @@ No. Rellenas tus datos y generas el contrato como una solicitud de reserva gratu
         </div>
     </div>
 
+    <!-- Script Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
     <!-- Script App -->
-    <script src="js/app.js"></script>
+    <script src="js/app.js?v=1.7"></script>
+    <script>
+        // Init Lightbox
+        const lightbox = GLightbox({
+            selector: '.glightbox',
+            touchNavigation: true,
+            loop: true,
+            autoplayVideos: true
+        });
+    </script>
 
 </body></html>
