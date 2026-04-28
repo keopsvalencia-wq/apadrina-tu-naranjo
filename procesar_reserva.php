@@ -53,11 +53,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $headers .= "MIME-Version: 1.0" . $eol;
     $headers .= "Content-Type: multipart/mixed; boundary=\"" . $separator . "\"";
     
-    // Mensaje codificado en base64 para evitar que Webmail OX lo interprete como adjunto Part_1.html
+    // Cuerpo HTML (Inline para evitar que se vea como adjunto)
     $body = "--" . $separator . $eol;
     $body .= "Content-Type: text/html; charset=\"UTF-8\"" . $eol;
-    $body .= "Content-Transfer-Encoding: base64" . $eol . $eol;
-    $body .= chunk_split(base64_encode($body_html)) . $eol;
+    $body .= "Content-Transfer-Encoding: 8bit" . $eol;
+    $body .= "Content-Disposition: inline" . $eol . $eol;
+    $body .= $body_html . $eol;
     
     // Adjunto PDF
     $body .= "--" . $separator . $eol;

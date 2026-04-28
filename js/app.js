@@ -108,7 +108,7 @@ async function generateContractBase64() {
     await new Promise(r => setTimeout(r, 1000)); 
 
     const opt = {
-        margin: [10, 10, 10, 10],
+        margin: [5, 5, 5, 5],
         image: { type: 'jpeg', quality: 0.98 },
         html2canvas: { 
             scale: 2, 

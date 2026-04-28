@@ -102,18 +102,24 @@
 <body class="bg-background text-on-background font-body selection:bg-primary-container selection:text-on-primary-container">
 <!-- TopAppBar -->
 <header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-stone-900/80 backdrop-blur-xl shadow-sm">
-<nav class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+<nav class="max-w-7xl mx-auto flex items-center justify-between px-4 py-3 md:px-6 md:py-4">
 <div class="flex items-center gap-2">
-<img src="logo.png" alt="Apadrina tu Naranjo" class="h-14 w-auto object-contain rounded">
+<img src="logo.png" alt="Apadrina tu Naranjo" class="h-10 md:h-14 w-auto object-contain rounded">
 </div>
-<div class="hidden md:flex items-center gap-8">
+<div class="hidden lg:flex items-center gap-8">
     <a href="#huerto" class="font-medium text-on-surface-variant hover:text-primary transition-colors">El Huerto</a>
     <a href="#galeria" class="font-medium text-on-surface-variant hover:text-primary transition-colors italic decoration-primary/30 decoration-2">Fotos Reales</a>
     <a href="#faq" class="font-medium text-on-surface-variant hover:text-primary transition-colors">Dudas</a>
 </div>
-<button onclick="openModal('reservaModal')" class="hidden md:block bg-primary-container text-white px-6 py-2 rounded-xl font-bold transition-all active:scale-95">
-                Apadrinar
-            </button>
+<div class="flex items-center gap-2 md:gap-4">
+    <a href="tel:+34607306477" class="flex items-center justify-center bg-secondary/10 text-secondary p-2 md:px-4 md:py-2 rounded-xl font-bold hover:bg-secondary/20 transition-all" title="Llamar">
+        <span class="material-symbols-outlined text-xl">call</span>
+        <span class="hidden sm:inline ml-2 text-sm md:text-base">+34 607 306 477</span>
+    </a>
+    <button onclick="openModal('reservaModal')" class="bg-primary-container text-white px-4 py-2 md:px-6 md:py-2 rounded-xl font-bold transition-all active:scale-95 shadow-lg shadow-primary-container/20 text-sm md:text-base">
+        Apadrinar
+    </button>
+</div>
 </nav>
 </header>
 <main class="pt-16 pb-24 md:pb-0">
@@ -159,8 +165,8 @@
     <p class="text-on-surface-variant leading-relaxed mt-2">Selecciona un naranjo en nuestra finca de Valencia. Le pondremos el nombre que elijas en su tablilla y podrás seguir su evolución.</p>
 </div>
 <!-- Step 2 -->
-<div class="bg-surface-container-low p-8 rounded-[2rem] editorial-shadow group transition-transform hover:-translate-y-2">
-<div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-8 shadow-sm">
+<div class="bg-surface-container-low p-8 rounded-[2rem] editorial-shadow group transition-transform hover:-translate-y-2 text-center md:text-left">
+<div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-8 shadow-sm mx-auto md:mx-0">
 <span class="material-symbols-outlined text-4xl text-secondary" data-icon="agriculture">agriculture</span>
 </div>
 <h3 class="font-headline font-bold text-2xl mb-4">Nosotros Cuidamos</h3>
@@ -243,6 +249,22 @@
             <img src="fotos/10.jpeg" alt="Detalle del tronco" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
             <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
         </a>
+
+        <!-- Foto 6: Padrino con su árbol -->
+        <a href="fotos/6.jpeg" class="glightbox group relative aspect-square overflow-hidden rounded-[2.5rem] editorial-shadow transition-all duration-500 hover:-translate-y-2">
+            <img src="fotos/6.jpeg" alt="Padrino con su naranjo personalizado" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
+                <p class="text-white font-bold text-lg drop-shadow-md">Momentos Especiales</p>
+            </div>
+        </a>
+
+        <!-- Foto 11: Tablilla Kasica4ever -->
+        <a href="fotos/11.jpeg" class="glightbox group relative aspect-square overflow-hidden rounded-[2.5rem] editorial-shadow transition-all duration-500 hover:-translate-y-2">
+            <img src="fotos/11.jpeg" alt="Tablilla personalizada Kasica4ever" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
+                <p class="text-white font-bold text-lg drop-shadow-md">Tu Nombre en el Huerto</p>
+            </div>
+        </a>
     </div>
 </section>
 
@@ -262,7 +284,7 @@
 </li>
 <li class="flex items-start gap-4">
 <span class="material-symbols-outlined bg-white/20 p-1 rounded-full text-white" data-icon="check">check</span>
-<span class="text-lg">Envío incluido en la península</span>
+<span class="text-lg">Cultivo 100% natural y sostenible</span>
 </li>
 <li class="flex items-start gap-4">
 <span class="material-symbols-outlined bg-white/20 p-1 rounded-full text-white" data-icon="check">check</span>
@@ -275,10 +297,11 @@
                         ¡Oferta Anual!
                     </div>
 <span class="text-primary font-bold uppercase tracking-widest text-sm mb-4 block">Suscripción Anual</span>
-<div class="flex items-baseline gap-2 mb-6">
-<span class="text-6xl font-headline font-black tracking-tighter">40€</span>
-<span class="text-on-surface-variant">/ año</span>
+<div class="flex items-baseline gap-2 mb-2">
+    <span class="text-6xl font-headline font-black tracking-tighter">40€</span>
+    <span class="text-on-surface-variant">/ año</span>
 </div>
+<p class="text-xs text-on-surface-variant mb-6 font-medium italic">* Portes no incluidos</p>
 <div class="space-y-4 mb-10">
 <div class="flex justify-between py-2 border-b border-surface-variant">
 <span class="text-on-surface-variant">Cosecha garantizada</span>
@@ -351,7 +374,7 @@
 <span class="material-symbols-outlined text-primary group-open:rotate-180 transition-transform">expand_more</span>
 </summary>
 <p class="mt-4 text-on-surface-variant leading-relaxed">
-Las naranjas (variedad Navelinas) alcanzan su punto óptimo de maduración natural en otoño/invierno. La temporada de envíos suele ser de noviembre a mayo. Jose y Alex te avisarán en cuanto estén listas para ser enviadas directas del árbol a tu casa.
+    Las naranjas (variedad Navelinas) alcanzan su punto óptimo de maduración natural en otoño/invierno. La temporada de envíos suele ser de noviembre a mayo. Jose y Alex te avisarán en cuanto estén listas para ser enviadas directas del árbol a tu casa en las cantidades que hayamos estipulado via mail o teléfono.
 </p>
 </details>
 <!-- Pregunta 2 -->
@@ -559,52 +582,50 @@ No. Rellenas tus datos y generas el contrato como una solicitud de reserva gratu
                     <!-- Panel de Previsualización Contrato -->
                     <div id="reserva-preview-container" class="lg:w-1/2 bg-gray-200 p-4 sm:p-8 lg:overflow-y-auto flex flex-col items-center justify-center">
                         <h3 class="text-lg font-bold text-gray-700 mb-4 lg:hidden w-full max-w-lg mt-4">Previsualización del contrato:</h3>
-                        <div class="w-full max-w-lg bg-white shadow-xl lg:shadow-2xl p-6 sm:p-8 rounded-lg doc-preview mx-auto" id="contract-document">
+                        <div class="w-full max-w-lg bg-white shadow-xl lg:shadow-2xl p-6 sm:p-8 rounded-lg doc-preview mx-auto" id="contract-document" style="font-size: 0.85rem; line-height: 1.2;">
                             
-                            <div class="text-center mb-6">
-                                <h1 class="text-2xl font-serif font-bold text-gray-900 border-b-2 border-gray-800 pb-2 inline-block">Apadrina tu Naranjo</h1>
-                                <p class="italic text-sm text-gray-600 mt-2">Naranjas valencianas directas del campo a tu mesa.</p>
-                                <h2 class="text-lg font-bold mt-4 bg-gray-100 p-2">CONTRATO DE APADRINAMIENTO Y RESERVA DE COSECHA</h2>
+                            <div class="text-center mb-4">
+                                <h1 class="text-xl font-serif font-bold text-gray-900 border-b-2 border-gray-800 pb-1 inline-block">Apadrina tu Naranjo</h1>
+                                <p class="italic text-xs text-gray-600 mt-1">Naranjas valencianas directas del campo a tu mesa.</p>
+                                <h2 class="text-md font-bold mt-2 bg-gray-100 p-1 uppercase">Contrato de Apadrinamiento y Reserva</h2>
                             </div>
 
-                            <div class="text-sm space-y-4 text-gray-800">
-                                <div class="bg-gray-50 p-4 border border-gray-200">
-                                    <p><strong>UBICACIÓN:</strong> El Romaní (Valencia).</p>
-                                    <p><strong>PRODUCTOR:</strong> Jose Atienza con DNI 22.619.580-T.</p>
-                                    <p><strong>PADRINO:</strong> <span id="doc-nombre" class="text-corpOrange font-bold underline decoration-dotted decoration-gray-400">[Tu Nombre]</span> con DNI <span id="doc-dni" class="text-corpOrange font-bold underline decoration-dotted decoration-gray-400">[Tu DNI]</span>.</p>
-                                    <p><strong>DIRECCIÓN:</strong> <span id="doc-direccion" class="text-corpOrange font-bold underline decoration-dotted decoration-gray-400">[Tu Dirección]</span>.</p>
-                                    <div class="flex flex-wrap gap-x-4">
+                            <div class="space-y-2 text-gray-800">
+                                <div class="bg-gray-50 p-3 border border-gray-200 text-xs">
+                                    <p class="mb-1"><strong>UBICACIÓN:</strong> El Romaní (Valencia).</p>
+                                    <p class="mb-1"><strong>PRODUCTOR:</strong> Jose Atienza con DNI 22.619.580-T.</p>
+                                    <p class="mb-1"><strong>PADRINO:</strong> <span id="doc-nombre" class="text-corpOrange font-bold underline decoration-dotted decoration-gray-400">[Tu Nombre]</span> con DNI <span id="doc-dni" class="text-corpOrange font-bold underline decoration-dotted decoration-gray-400">[Tu DNI]</span>.</p>
+                                    <p class="mb-1"><strong>DIRECCIÓN:</strong> <span id="doc-direccion" class="text-corpOrange font-bold underline decoration-dotted decoration-gray-400">[Tu Dirección]</span>.</p>
+                                    <div class="flex flex-wrap gap-x-4 mb-1">
                                         <p><strong>ÁRBOL:</strong> <span id="doc-arbol" class="text-corpOrange font-bold underline decoration-dotted decoration-gray-400 italic">[Nombre]</span></p>
                                         <p><strong>FECHA ÁRBOL:</strong> <span id="doc-fecha-arbol" class="text-corpOrange font-bold underline decoration-dotted decoration-gray-400 italic">[Fecha]</span></p>
                                     </div>
-                                    <p class="mt-4 text-right italic text-xs">Documento de reserva generado el <span id="fecha-contrato" class="font-bold underline decoration-dotted decoration-gray-300">___ de ___ de 2026</span></p>
+                                    <p class="text-right italic text-[10px]">Generado el <span id="fecha-contrato" class="font-bold underline">___ de ___ de 2026</span></p>
                                 </div>
 
-                                <p><strong>1. OBJETO:</strong> El presente documento tiene como objetivo regular la relación de apadrinamiento de un ejemplar de naranjo (Navelina) situado en las parcelas gestionadas por Jose Atienza en El Romaní. Este acuerdo no constituye una transferencia de propiedad del árbol ni de la tierra, sino un derecho de reserva sobre su producción estipulada abajo en el contrato.</p>
+                                <p class="text-[11px]"><strong>1. OBJETO:</strong> Reserva de derecho sobre la producción de un naranjo (Navelina) en El Romaní.</p>
                                 
-                                <p><strong>2. DERECHOS DEL PADRINO:</strong> Bautismo (nombre en tablilla). Reserva de Cosecha: Exclusiva de hasta 60 kg de Navelina, recolectadas y servidas según lo desee, con un coste de 40€ por temporada. Transparencia y Visitas a la finca.</p>
+                                <p class="text-[11px]"><strong>2. DERECHOS:</strong> Nombre en tablilla, reserva de hasta 60 kg por temporada (40€/año) y visitas a la finca.</p>
                                 
-                                <p><strong>3. OBLIGACIONES:</strong> Cultivo Responsable, Mantenimiento y Garantía de Origen (100% de su naranjo).</p>
+                                <p class="text-[11px]"><strong>3 y 4. OBLIGACIONES Y LOGÍSTICA:</strong> Cultivo sostenible y recolección bajo demanda. Portes no incluidos.</p>
                                 
-                                <p><strong>4. LOGÍSTICA:</strong> Recolección bajo demanda. Gastos de Envío no incluidos en cuota inicial (pago según acuerdo).</p>
+                                <p class="text-[11px]"><strong>5. RIESGOS:</strong> Cubiertos con otros árboles de la finca en caso de fuerza mayor.</p>
                                 
-                                <p><strong>5 y 6. RIESGOS Y DURACIÓN:</strong> Fuerza mayor cubierta con otros árboles de la finca. Duración: 1 temporada citrícola completa. Renovación por mutuo acuerdo.</p>
-                                
-                                <div class="mt-4 grid grid-cols-2 gap-8 text-center pt-4 border-t border-gray-300">
+                                <div class="mt-2 grid grid-cols-2 gap-4 text-center pt-2 border-t border-gray-300">
                                     <div>
-                                        <p class="mb-1">El Productor</p>
-                                        <div class="h-14 flex items-center justify-center mb-1">
+                                        <p class="text-[10px] mb-1">El Productor</p>
+                                        <div class="h-10 flex items-center justify-center mb-1">
                                             <img src="firma_jose.png" alt="Firma Jose Atienza" class="max-h-full">
                                         </div>
-                                        <p class="border-t border-gray-400 mx-4 pt-1">Jose Atienza</p>
+                                        <p class="border-t border-gray-400 mx-4 pt-1 text-[10px]">Jose Atienza</p>
                                     </div>
                                     <div>
-                                        <p class="mb-5">El Padrino</p>
-                                        <p class="font-serif italic text-corpOrange signature-font text-2xl h-8" id="doc-firma"></p>
-                                        <p class="border-t border-gray-400 mx-4 pt-1"><span id="doc-firma-nombre">[Nombre Padrino]</span></p>
+                                        <p class="text-[10px] mb-4">El Padrino</p>
+                                        <p class="font-serif italic text-corpOrange signature-font text-xl h-6" id="doc-firma"></p>
+                                        <p class="border-t border-gray-400 mx-4 pt-1 text-[10px]"><span id="doc-firma-nombre">[Nombre]</span></p>
                                     </div>
                                 </div>
-                                <p class="text-[10px] text-center text-gray-400 mt-2 italic">Nota: El contrato será oficial al recibir el pago.</p>
+                                <p class="text-[9px] text-center text-gray-400 mt-1 italic">Válido al confirmar el pago.</p>
                             </div>
                         </div>
                     </div>
@@ -637,7 +658,7 @@ No. Rellenas tus datos y generas el contrato como una solicitud de reserva gratu
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     
     <!-- Script App -->
-    <script src="js/app.js?v=1.7"></script>
+    <script src="js/app.js?v=1.8"></script>
     <script>
         // Init Lightbox
         const lightbox = GLightbox({
