@@ -5,4 +5,3 @@ echo ==============================================
 python sftp_deploy.py
 echo.
 echo Despliegue finalizado. Ya puedes revisar la web.
-pause
