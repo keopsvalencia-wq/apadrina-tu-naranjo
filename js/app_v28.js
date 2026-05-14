@@ -484,6 +484,39 @@ window.submitComentario = async function(event) {
     }
 }
 
+window.promptCambiarPassword = async function() {
+    const p_actual = prompt("Introduce la contraseña ACTUAL:");
+    if (!p_actual) return;
+    
+    const p_nueva = prompt("Introduce la NUEVA contraseña:");
+    if (!p_nueva) return;
+    
+    const p_nueva_re = prompt("Repite la NUEVA contraseña:");
+    if (p_nueva !== p_nueva_re) {
+        alert("Las contraseñas nuevas no coinciden.");
+        return;
+    }
+
+    try {
+        const { data, error } = await supabaseClient.rpc('cambiar_password', {
+            p_actual: p_actual,
+            p_nueva: p_nueva
+        });
+
+        if (error) throw error;
+
+        if (data) {
+            alert("¡Contraseña cambiada con éxito! La próxima vez usa la nueva.");
+            josePwd = p_nueva; // Actualizar en sesión local
+        } else {
+            alert("La contraseña actual es INCORRECTA.");
+        }
+    } catch (err) {
+        console.error("Error cambiando password:", err);
+        alert("Error técnico al cambiar la contraseña.");
+    }
+}
+
 function escapeHTML(str) {
     if (!str) return '';
     return str.replace(/[&<>'"]/g, 

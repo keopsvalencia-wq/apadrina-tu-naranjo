@@ -452,10 +452,13 @@ No. Rellenas tus datos y generas el contrato como una solicitud de reserva gratu
                 Gestión de Reservas
             </h2>
             <div class="flex gap-2">
-                <button onclick="loadReservas()" class="text-stone-500 hover:text-orange-600 transition-colors" title="Refrescar">
+                <button onclick="loadReservas()" class="text-stone-500 hover:text-orange-600 transition-colors p-2" title="Refrescar">
                     <i class="fa-solid fa-rotate"></i>
                 </button>
-                <span class="bg-orange-600 text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">Modo Privado</span>
+                <button onclick="promptCambiarPassword()" class="text-stone-500 hover:text-orange-600 transition-colors p-2" title="Cambiar Contraseña">
+                    <i class="fa-solid fa-key"></i>
+                </button>
+                <span class="bg-orange-600 text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider flex items-center">Modo Privado</span>
             </div>
         </div>
         <div id="lista-reservas" class="grid grid-cols-1 md:grid-cols-2 gap-4">
