@@ -52,12 +52,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $headers .= "MIME-Version: 1.0" . $eol;
     $headers .= "Content-Type: multipart/mixed; boundary=\"" . $separator . "\"";
     
-    // Cuerpo HTML (Inline)
+    // Cuerpo HTML (Base64 para evitar que IONOS lo rompa)
     $body = "--" . $separator . $eol;
     $body .= "Content-Type: text/html; charset=\"UTF-8\"" . $eol;
-    $body .= "Content-Transfer-Encoding: 8bit" . $eol;
+    $body .= "Content-Transfer-Encoding: base64" . $eol;
     $body .= "Content-Disposition: inline" . $eol . $eol;
-    $body .= $body_html . $eol;
+    $body .= chunk_split(base64_encode($body_html)) . $eol;
     
     // Adjunto PDF
     $body .= "--" . $separator . $eol;

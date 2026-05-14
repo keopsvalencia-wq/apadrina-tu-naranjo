@@ -108,42 +108,34 @@ window.updateContract = function() {
 };
 
 async function generateContractBase64() {
-    // 1. Sincronizar datos (esto ahora llena tanto la previa como la plantilla de impresión)
     window.updateContract();
-    
     const element = document.getElementById('contract-print-template');
     if (!element) return null;
 
-    // Aseguramos que sea visible solo para la captura
-    element.style.display = 'block';
-
     const opt = {
-        margin: 10,
-        filename: 'contrato.pdf',
+        margin: 0,
+        filename: 'contrato_apadrinamiento.pdf',
         image: { type: 'jpeg', quality: 0.98 },
         html2canvas: { 
             scale: 2, 
             useCORS: true, 
             letterRendering: true,
             backgroundColor: '#ffffff',
-            logging: false
+            logging: false,
+            windowWidth: 800,
+            scrollY: 0,
+            scrollX: 0
         },
-        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
-        pagebreak: { mode: ['avoid-all'] }
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
     };
 
     try {
-        console.log("Generando PDF desde plantilla aislada...");
-        const dataUri = await html2pdf().set(opt).from(element).output('datauristring');
-        
-        // Volvemos a ocultar
-        element.style.display = 'none';
-        
+        // La plantilla ya está display:block y absolute fuera de pantalla en el HTML
+        const dataUri = await html2pdf().set(opt).from(element).outputPdf('datauristring');
         if (!dataUri || dataUri.length < 1000) throw new Error("PDF fallido");
         return dataUri;
     } catch (err) {
         console.error("Error Crítico PDF:", err);
-        element.style.display = 'none';
         return null;
     }
 }
@@ -156,20 +148,29 @@ window.submitReserva = async function(event) {
     const originalText = btn.innerHTML;
 
     btn.disabled = true;
-    btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Generando Contrato...';
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Procesando Reserva...';
 
     try {
-        // 1. Generar PDF
-        const pdfBase64 = await generateContractBase64();
-        if (!pdfBase64) throw new Error("No se pudo generar el PDF");
-
-        btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Enviando...';
-
-        // 2. FormData capturará los campos con 'name' automáticamente
+        // 1. FormData capturará los campos
         const formData = new FormData(form);
-        formData.append('pdf_base64', pdfBase64);
+        const data = Object.fromEntries(formData.entries());
 
-        // 3. Enviar
+        // 2. Guardar en Supabase (Respaldo de seguridad y gestión)
+        if (supabaseClient) {
+            const { error: sbError } = await supabaseClient.from('reservas_naranjos').insert([{
+                nombre: data.nombre,
+                email: data.email,
+                dni: data.dni,
+                direccion: data.direccion,
+                nombre_arbol: data.nombreArbol,
+                fecha_arbol: data.fechaArbol,
+                telefono: data.telefono
+            }]);
+            if (sbError) console.error("Error Supabase:", sbError);
+        }
+
+        // 3. Notificar a Jose vía PHP
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Enviando Notificación...';
         const response = await fetch('procesar_reserva.php', {
             method: 'POST',
             body: formData
@@ -180,12 +181,11 @@ window.submitReserva = async function(event) {
             document.getElementById('reserva-preview-container').classList.add('hidden');
             document.getElementById('reserva-success').classList.remove('hidden');
         } else {
-            const errorData = await response.json();
-            throw new Error(errorData.message || 'Error en el servidor');
+            throw new Error('Error en el envío');
         }
     } catch (error) {
         console.error('Error:', error);
-        alert('Error al enviar la reserva: ' + error.message);
+        alert('Error al enviar la reserva. Por favor, contacta con nosotros.');
     } finally {
         btn.disabled = false;
         btn.innerHTML = originalText;
@@ -337,6 +337,112 @@ window.loadComentarios = async function() {
     } catch (error) {
         console.error('Error cargando comentarios:', error);
         lista.innerHTML = '<div class="text-center text-red-500 py-8">No se han podido cargar los comentarios.</div>';
+    }
+
+    // Si estamos en Modo Jose, cargamos también el panel de reservas
+    if (josePwd) {
+        loadReservas();
+    } else {
+        const panelReservas = document.getElementById('panel-reservas-admin');
+        if (panelReservas) panelReservas.classList.add('hidden');
+    }
+}
+
+window.loadReservas = async function() {
+    const panel = document.getElementById('panel-reservas-admin');
+    const lista = document.getElementById('lista-reservas');
+    if (!panel || !lista) return;
+
+    panel.classList.remove('hidden');
+    lista.innerHTML = '<div class="col-span-full text-center py-8"><i class="fas fa-spinner fa-spin mr-2"></i> Cargando reservas...</div>';
+
+    try {
+        const { data, error } = await supabaseClient.from('reservas_naranjos').select('*').order('created_at', { ascending: false });
+        if (error) throw error;
+
+        if (data.length === 0) {
+            lista.innerHTML = '<div class="col-span-full text-center text-gray-500 py-8">No hay reservas registradas todavía.</div>';
+            return;
+        }
+
+        lista.innerHTML = '';
+        data.forEach(r => {
+            const date = new Date(r.created_at).toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+            lista.innerHTML += `
+            <div class="bg-white border border-gray-200 p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow relative group">
+                <div class="flex justify-between items-start mb-2">
+                    <div>
+                        <p class="font-bold text-gray-900">${escapeHTML(r.nombre)}</p>
+                        <p class="text-xs text-gray-500">${date}</p>
+                    </div>
+                    <button onclick="downloadContractById('${r.id}')" class="text-primary hover:text-primary-dark transition-colors" title="Descargar Contrato PDF">
+                        <i class="fa-solid fa-file-pdf text-2xl"></i>
+                    </button>
+                </div>
+                <div class="space-y-1 text-sm text-gray-600">
+                    <p><i class="fa-solid fa-envelope w-5"></i> ${escapeHTML(r.email)}</p>
+                    <p><i class="fa-solid fa-phone w-5"></i> ${escapeHTML(r.telefono || '-')}</p>
+                    <p><i class="fa-solid fa-tree w-5 text-green-600"></i> ${escapeHTML(r.nombre_arbol || '-')}</p>
+                </div>
+                <div class="mt-3 pt-3 border-t border-gray-100 flex gap-2">
+                    <span class="text-[10px] px-2 py-0.5 rounded-full ${r.pagado ? 'bg-green-100 text-green-700' : 'bg-amber-100 text-amber-700'} font-bold">
+                        ${r.pagado ? 'PAGADO' : 'PENDIENTE PAGO'}
+                    </span>
+                </div>
+            </div>`;
+        });
+    } catch (err) {
+        console.error(err);
+        lista.innerHTML = '<div class="col-span-full text-center text-red-500 py-8">Error al cargar reservas.</div>';
+    }
+}
+
+window.downloadContractById = async function(id) {
+    if (!josePwd) return alert('Debes estar en Modo Jose');
+    
+    try {
+        const { data, error } = await supabaseClient.from('reservas_naranjos').select('*').eq('id', id).single();
+        if (error) throw error;
+        
+        // Llenar campos invisibles para sincronizar plantilla
+        const setVal = (id, val) => { const el = document.getElementById(id); if(el) el.value = val; };
+        setVal('reserva-nombre', data.nombre);
+        setVal('reserva-dni', data.dni);
+        setVal('reserva-direccion', data.direccion);
+        setVal('reserva-nombre-arbol', data.nombre_arbol);
+        setVal('reserva-fecha-arbol', data.fecha_arbol);
+        
+        // Sincronizar plantilla de impresión
+        window.updateContract();
+        
+        const element = document.getElementById('contract-print-template');
+        if (!element) return;
+
+        // Mostrar momentáneamente para asegurar que html2pdf lo capture
+        element.style.position = 'fixed';
+        element.style.left = '0';
+        element.style.top = '0';
+        element.style.zIndex = '9999';
+        element.style.display = 'block';
+
+        const opt = {
+            margin: 0,
+            filename: `Contrato_${data.nombre.replace(/\s+/g, '_')}.pdf`,
+            image: { type: 'jpeg', quality: 0.98 },
+            html2canvas: { scale: 2, useCORS: true, logging: false },
+            jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+        };
+
+        await html2pdf().set(opt).from(element).save();
+        
+        // Restaurar estado oculto
+        element.style.display = 'block'; // Lo dejamos bloque pero movido
+        element.style.position = 'absolute';
+        element.style.left = '-9999px';
+        
+    } catch (err) {
+        console.error(err);
+        alert('Error al generar el contrato.');
     }
 }
 
